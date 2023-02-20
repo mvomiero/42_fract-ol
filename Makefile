@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 15:13:55 by mvomiero          #+#    #+#              #
-#    Updated: 2023/02/20 17:16:42 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/02/20 17:45:24 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,5 +83,11 @@ fclean: clean
 	@rm -f $(LIBFT_PATH)$(LIBFT_NAME)
 
 re: fclean all
+
+valgrind:
+	valgrind --leak-check=full ./fractol
+
+man:
+	man minilibx-linux/man/man1/mlx.1
 
 .PHONY: all re clean fclean

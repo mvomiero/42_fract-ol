@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:16:46 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/20 15:17:08 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/20 18:30:26 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,8 @@
 # include "libft.h"
 # include <stdio.h>
 # include <math.h>
+
+# define WIDTH 900
+# define HEIGHT 600
 
 #endif
