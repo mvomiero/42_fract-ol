@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.c                                          :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/20 15:16:08 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/21 18:01:54 by mvomiero         ###   ########.fr       */
+/*   Created: 2023/02/21 17:00:26 by mvomiero          #+#    #+#             */
+/*   Updated: 2023/02/21 17:03:40 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-/* main:
-	main function.
- */
-int	main(int ac, char **av)
+void	clean_exit(int exit_code, t_fractol *f)
 {
-	t_fractol	f;
-
-	if (ac < 2)
-		help_msg(&f);
-	init_struct(&f);
-	parse_args(&f, ac, av);
+	if (!f)
+		exit(exit_code);
+	if (f->palette)
+		free(f->palette);
+	if (f->img)
+		mlx_destroy_image(f->mlx, f->img);
+	if (f->win && f->mlx)
+		mlx_destroy_window(f->mlx, f->win);
+	if (f->mlx)
+	{
+		mlx_loop_end(f->mlx);
+		//mlx_destroy_display(f->mlx);
+		free(f->mlx);
+	}
+	exit(exit_code);
 }
-

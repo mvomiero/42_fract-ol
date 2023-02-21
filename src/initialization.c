@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.c                                          :+:      :+:    :+:   */
+/*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/20 15:16:08 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/21 18:01:54 by mvomiero         ###   ########.fr       */
+/*   Created: 2023/02/21 17:07:09 by mvomiero          #+#    #+#             */
+/*   Updated: 2023/02/21 18:00:37 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-/* main:
-	main function.
- */
-int	main(int ac, char **av)
+void	init_struct(t_fractol *f)
 {
-	t_fractol	f;
-
-	if (ac < 2)
-		help_msg(&f);
-	init_struct(&f);
-	parse_args(&f, ac, av);
+	f->mlx = NULL;
+	f->win = NULL;
+	f->img = NULL;
+	f->buf = NULL;
+	f->set = -1;
+	f->min_r = 0;
+	f->max_r = 0;
+	f->min_i = 0;
+	f->max_i = 0;
+	f->kr = 0;
+	f->ki = 0;
+	f->sx = 0;
+	f->rx = 0;
+	f->fx = 0;
+	f->palette = NULL;
+	f->color_pattern = -1;
+	f->color = 0;
 }
-

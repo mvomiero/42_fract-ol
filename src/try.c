@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:15:46 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/21 15:46:15 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/21 17:05:07 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 } */
 
 
-// to use a whatever key to close the opened window
+/* // to use a whatever key to close the opened window
 
 typedef struct	s_vars {
 	void	*mlx;
@@ -53,4 +53,4 @@ int	main(void)
 	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
 	mlx_hook(vars.win, 2, 1L<<0, ft_close, &vars);
 	mlx_loop(vars.mlx);
-}
+} */
