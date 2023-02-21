@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 15:13:55 by mvomiero          #+#    #+#              #
-#    Updated: 2023/02/20 17:45:24 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/02/21 15:48:56 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,8 +34,8 @@ INC			=	-I ./includes/\
 
 # Sources
 SRC_PATH	=	src/
-SRC			=	fractol.c \
-				try.c
+#	!!!!!! REMEMBER TO CHANGE SRC
+SRC			=	*.c 
 
 SRCS		= $(addprefix $(SRC_PATH), $(SRC))
 
