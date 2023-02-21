@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:00:26 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/21 17:03:40 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/21 18:19:51 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	clean_exit(int exit_code, t_fractol *f)
 	if (f->mlx)
 	{
 		mlx_loop_end(f->mlx);
-		//mlx_destroy_display(f->mlx);
+		mlx_destroy_display(f->mlx);
 		free(f->mlx);
 	}
 	exit(exit_code);
