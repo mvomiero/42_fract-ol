@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.c                                          :+:      :+:    :+:   */
+/*   fract_mandelbrot.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/20 15:16:08 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/22 18:23:28 by mvomiero         ###   ########.fr       */
+/*   Created: 2023/02/22 17:55:48 by mvomiero          #+#    #+#             */
+/*   Updated: 2023/02/22 17:56:58 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-/* main:
-	main function.
- */
-int	main(int ac, char **av)
+
+int	mandelbrot(double cr, double ci)
 {
-	t_fractol	f;
+	int		n;
+	double	zr;
+	double	zi;
+	double	tmp;
 
-	if (ac < 2)
-		help_msg(&f);
-	init_struct(&f);
-	parse_args(&f, ac, av);
-	init(&f);
-	render(&f);
-	mlx_loop(f.mlx);
+	zr = 0;
+	zi = 0;
+	n = 0;
+	while (n < MAX_ITERATIONS)
+	{
+		if ((zr * zr + zi * zi) > 4.0)
+			break ;
+		tmp = 2 * zr * zi + ci;
+		zr = zr * zr - zi * zi + cr;
+		zi = tmp;
+		n++;
+	}
+	return (n);
 }
-

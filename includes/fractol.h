@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:16:46 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/21 17:40:53 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/22 18:13:52 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 
 # define WIDTH 900
 # define HEIGHT 600
+
+
+# define MAX_ITERATIONS 50
 
 // Fractal sets
 # define MANDELBROT 1
@@ -54,10 +57,20 @@ void	init_struct(t_fractol *f);
 double	ft_atof(char *str);
 void	parse_args(t_fractol *f, int ac, char **av);
 
+void	init(t_fractol *f);
+void	render(t_fractol *f);
+
+void	get_complex_layout(t_fractol *f);
+
+
+int	mandelbrot(double cr, double ci);
+
 
 
 
 void	help_msg(t_fractol *f);
+int		err_msg(char *str1, int errno);
+
 
 
 void	clean_exit(int exit_code, t_fractol *f);
