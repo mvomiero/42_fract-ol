@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 15:13:55 by mvomiero          #+#    #+#              #
-#    Updated: 2023/02/22 18:14:48 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/02/23 17:47:23 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ SRC_PATH	=	src/
 #SRC			=	*.c 
 SRC			=	exit.c  fractol.c  initialization.c  msg.c  parsing_args.c  try.c  utils.c \
 				fract_mandelbrot.c \
-				render.c
+				render.c \
+				events.c
 
 SRCS		= $(addprefix $(SRC_PATH), $(SRC))
 

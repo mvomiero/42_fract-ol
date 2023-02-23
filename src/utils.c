@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:39:22 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/22 17:30:54 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/23 17:48:44 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,3 +64,8 @@ double	ft_atof(char *str)
 	return (nb * is_neg);
 }
 
+int	end_fractol(t_fractol *mlx)
+{
+	clean_exit(0, mlx);
+	return (0);
+}

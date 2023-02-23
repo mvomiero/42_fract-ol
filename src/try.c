@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:15:46 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/21 17:05:07 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/23 17:26:26 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,3 +54,6 @@ int	main(void)
 	mlx_hook(vars.win, 2, 1L<<0, ft_close, &vars);
 	mlx_loop(vars.mlx);
 } */
+
+// TO PRINT A STRING
+//mlx_string_put(f.mlx, f.win, 50, 50, -1654654232, "ciaociao");
