@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:16:46 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/22 18:13:52 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/23 12:06:11 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <math.h>
 
 # define WIDTH 900
-# define HEIGHT 600
+# define HEIGHT 900
 
 
 # define MAX_ITERATIONS 50
@@ -64,6 +64,7 @@ void	get_complex_layout(t_fractol *f);
 
 
 int	mandelbrot(double cr, double ci);
+void	reinit_img(t_fractol *f);
 
 
 

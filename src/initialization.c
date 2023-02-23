@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:07:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/22 18:34:03 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/23 12:07:00 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,17 @@ static void	init_img(t_fractol *f)
 	f->buf = buf;
 }
 
+void	reinit_img(t_fractol *f)
+{
+	if (f->mlx && f->img)
+		mlx_destroy_image(f->mlx, f->img);
+	if (f->palette)
+		free(f->palette);
+	if (f->buf)
+		f->buf = NULL;
+	init_img(f);
+}
+
 void	init(t_fractol *f)
 {
 	f->mlx = mlx_init();
@@ -62,7 +73,7 @@ void	init(t_fractol *f)
 	f->rx = 0.5;
 	f->fx = 1.0;
 	get_complex_layout(f);
-	init_img(f);
+	reinit_img(f);
 	//color_shift(f);
 }
 
