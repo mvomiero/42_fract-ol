@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:07:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/23 12:07:00 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/23 13:43:02 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,6 @@ void	init_struct(t_fractol *f)
 	f->max_i = 0;
 	f->kr = 0;
 	f->ki = 0;
-	f->sx = 0;
-	f->rx = 0;
-	f->fx = 0;
 	f->palette = NULL;
 	f->color_pattern = -1;
 	f->color = 0;
@@ -69,9 +66,6 @@ void	init(t_fractol *f)
 	f->win = mlx_new_window(f->mlx, WIDTH, HEIGHT, "Fract'ol");
 		if (!f->win)
 		clean_exit(err_msg("mlx: no window", 4), f);
-	f->sx = 2.0;
-	f->rx = 0.5;
-	f->fx = 1.0;
 	get_complex_layout(f);
 	reinit_img(f);
 	//color_shift(f);

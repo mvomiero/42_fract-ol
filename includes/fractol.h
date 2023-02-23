@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:16:46 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/23 12:06:11 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/23 13:43:10 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,6 @@ typedef struct s_fractol
 	double	max_i;
 	double	kr;
 	double	ki;
-	double	sx;
-	double	rx;
-	double	fx;
 	int		*palette;
 	int		color_pattern;
 	int		color;
