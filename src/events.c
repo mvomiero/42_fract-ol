@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:47:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/24 16:24:18 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/24 16:43:13 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,11 @@ int	key_event(int keycode, t_fractol *mlx)
 	else if (keycode == KEY_P)
 	{
 		mlx->color_pattern = PAOLA;
+		color_shift(mlx);
+	}
+	else if (keycode == KEY_R)
+	{
+		mlx->color_pattern = RANDOM;
 		color_shift(mlx);
 	}
 	else if (!key_event_extend(keycode, mlx))

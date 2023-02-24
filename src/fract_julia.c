@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   fract_julia.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 12:52:55 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/24 17:02:35 by mvomiero         ###   ########.fr       */
+/*   Created: 2023/02/24 18:05:48 by mvomiero          #+#    #+#             */
+/*   Updated: 2023/02/24 18:08:26 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	color_shift(t_fractol *f)
+int	julia(t_fractol *f, double zr, double zi)
 {
-	if (f->color_pattern == LUISA)
-		set_color_mono(f, COLOR);
-	else if (f->color_pattern == PAOLA)
-		set_color_multiple(f, (int [4]){COLOR_1, COLOR_2, COLOR_3, COLOR_4}, 4);
-	else if (f->color_pattern == RANDOM)
-		set_color_math(f, COLOR);
-/* 		set_color_multiple(f, (int [4]){0x000000, alt_color,
-			get_percent_color(f->color, 50), 0xFFFFFF}, 4); */
-	else
-		return ;
-	//	color_shift_striped(f);
+	int		n;
+	double	tmp;
+
+	n = 0;
+	while (n < f->iterations)
+	{
+		if ((zi * zi + zr * zr) > 4.0)
+			break ;
+		tmp = 2 * zr * zi + f->ki;
+		zr = zr * zr - zi * zi + f->kr;
+		zi = tmp;
+		n++;
+	}
+	return (n);
 }

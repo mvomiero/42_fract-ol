@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:50:51 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/24 16:21:36 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:57:31 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,35 @@ void	set_color_mono(t_fractol *f, int color)
 		color2 = 0x000000;
 		i += j;
 	}
-	f->palette[f->iterations -1] = 0;
+	//f->palette[f->iterations -1] = 0;
+}
+
+void	set_color_math(t_fractol *f, int color)
+{
+	int		i;
+	int		j;
+	double	fraction;
+	int		color1;
+	int		color2;
+
+	color1 = 0x000000;
+	color2 = color;
+	i = 0;
+	while (i < f->iterations)
+	{
+		j = 0;
+		while (j < f->iterations)
+		{
+			fraction = MATH((double)j);
+			f->palette[i + j] = interpolate(color1, color2, fraction);
+			j++;
+		}
+		color1 = color2;
+		color2 = 0x000000;
+		//color2 = 0x000000;
+		i += j;
+	}
+	//f->palette[f->iterations -1] = 0;
 }
 
 void	set_color_multiple(t_fractol *f, int colors[4], int n)
@@ -78,5 +106,6 @@ void	set_color_multiple(t_fractol *f, int colors[4], int n)
 		x++;
 		i += j;
 	}
-	f->palette[f->iterations - 1] = 0;
+	//f->palette[f->iterations - 1] = 0;
 }
+

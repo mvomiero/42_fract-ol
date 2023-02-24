@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:16:46 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/24 16:12:17 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/24 18:06:37 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,22 @@
 //colors
 # define LUISA 1
 # define PAOLA 2
+# define RANDOM 5
 
-# define COLOR 0xBA7CF0
+# define COLOR 0xBA7FF0
 
-# define COLOR_1 0xFFFFFF
-# define COLOR_2 0xDB23B3
-# define COLOR_3 0xDB23B3
-# define COLOR_4 0xFFFFFF
+# define COLOR_1 0xD90B6B
+# define COLOR_2 0xD90B6B
+# define COLOR_3 0x249EE0
+# define COLOR_4 0xBF2C1F
+
+
+//# define MATH cos
+//# define MATH exp
+//# define MATH log
+//# define MATH sqrt
+# define MATH cos
+
 
 
 
@@ -78,6 +87,8 @@ void	get_complex_layout(t_fractol *f);
 
 
 int	mandelbrot(t_fractol *f, double cr, double ci);
+int	julia(t_fractol *f, double zr, double zi);
+
 
 void	reinit_img(t_fractol *f);
 
@@ -87,6 +98,7 @@ void	color_shift(t_fractol *f);
 void	set_color_mono(t_fractol *f, int color);
 
 void	set_color_multiple(t_fractol *f, int colors[4], int n);
+void	set_color_math(t_fractol *f, int color);
 
 
 

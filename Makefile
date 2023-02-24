@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 15:13:55 by mvomiero          #+#    #+#              #
-#    Updated: 2023/02/24 15:32:13 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/02/24 18:08:04 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,8 @@ SRC			=	exit.c \
 				events.c \
 				utils_color.c \
 				color.c \
-				color_utils.c
+				color_utils.c \
+				fract_julia.c
 
 SRCS		= $(addprefix $(SRC_PATH), $(SRC))
 
@@ -98,5 +99,8 @@ valgrind:
 
 man:
 	man minilibx-linux/man/man1/mlx.1
+
+run: all
+	./fractol mandelbrot
 
 .PHONY: all re clean fclean

@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:51:19 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/24 15:46:50 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/24 18:06:48 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ static int	calculate_fractal(t_fractol *f, double pr, double pi)
 	if (f->set == MANDELBROT)
 		nb_iter = mandelbrot(f, pr, pi);
 	else if (f->set == JULIA)
-		nb_iter = 0;
-		//nb_iter = julia(f, pr, pi);
+		nb_iter = julia(f, pr, pi);
 	return (nb_iter);
 }
 
@@ -51,12 +50,15 @@ void	render(t_fractol *f)
 			pi = f->max_i + (double)y * (f->min_i - f->max_i) / HEIGHT;
 			nb_iter = calculate_fractal(f, pr, pi);
 			/* if (nb_iter < 15)
-				set_pixel_color(f, x, y, 0x00CBEAEA);
+				set_pixel_color(f, x, y, 0x000000);
 				//set_pixel_color(f, x, y, create_trgb(200,189,15,16));
 			else if (nb_iter < 30)
 				set_pixel_color(f, x, y, 0x882830D6);
 			else
 				set_pixel_color(f, x, y, 0xE3CAF4); */
+			if (nb_iter > f->iterations - 1)
+				set_pixel_color(f, x, y, 0xFFFFFF);
+			else
 			set_pixel_color(f, x, y, f->palette[nb_iter]);
 		}
 	}
