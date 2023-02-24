@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 17:00:26 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/24 13:45:38 by mvomiero         ###   ########.fr       */
+/*   Created: 2023/02/24 12:52:55 by mvomiero          #+#    #+#             */
+/*   Updated: 2023/02/24 13:08:06 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	clean_exit(int exit_code, t_fractol *f)
+void	color_shift(t_fractol *f)
 {
-	if (!f)
-		exit(exit_code);
-	if (f->palette)
-		free(f->palette);
-	if (f->img)
-		mlx_destroy_image(f->mlx, f->img);
-	if (f->win && f->mlx)
-	{
-		mlx_clear_window(f->mlx, f->win);
-		mlx_destroy_window(f->mlx, f->win);
-	}
-	if (f->mlx)
-	{
-		mlx_loop_end(f->mlx);
-		mlx_destroy_display(f->mlx);
-		free(f->mlx);
-	}
-	exit(exit_code);
+	if (f->color_pattern == LUISA)
+		set_color_mono(f, COLOR);
+	else if (f->color_pattern == PAOLA)
+		set_color_multiple(f, (int [4]){COLOR_1, COLOR_2, COLOR_3, COLOR_4}, 4);
+/* 		set_color_multiple(f, (int [4]){0x000000, alt_color,
+			get_percent_color(f->color, 50), 0xFFFFFF}, 4); */
+	else
+		return ;
+	//	color_shift_striped(f);
 }

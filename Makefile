@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 15:13:55 by mvomiero          #+#    #+#              #
-#    Updated: 2023/02/24 11:57:54 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/02/24 13:55:15 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,13 +34,19 @@ INC			=	-I ./includes/\
 
 # Sources
 SRC_PATH	=	src/
-#	!!!!!! REMEMBER TO CHANGE SRC
-#SRC			=	*.c 
-SRC			=	exit.c  fractol.c  initialization.c  msg.c  parsing_args.c  try.c  utils.c \
+
+SRC			=	exit.c \
+				fractol.c \
+				initialization.c \
+				msg.c \
+				parsing_args.c \
+				try.c  utils.c \
 				fract_mandelbrot.c \
 				render.c \
 				events.c \
-				utils_color.c
+				utils_color.c \
+				color.c \
+				color_utils.c
 
 SRCS		= $(addprefix $(SRC_PATH), $(SRC))
 

@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:16:46 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/24 12:10:02 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/24 13:25:51 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,19 @@
 
 // Fractal sets
 # define MANDELBROT 1
-# define JULIA 1
+# define JULIA 2
+
+//colors
+# define LUISA 1
+# define PAOLA 2
+
+# define COLOR 0xBA7CF0
+
+# define COLOR_1 0x000000
+# define COLOR_2 0xDB23B3
+# define COLOR_3 0xFA8378
+# define COLOR_4 0xFFFFFF
+
 
 
 // struct with all the data
@@ -68,12 +80,22 @@ int	mandelbrot(double cr, double ci);
 void	reinit_img(t_fractol *f);
 
 
+void	color_shift(t_fractol *f);
+
+void	set_color_mono(t_fractol *f, int color);
+
+void	set_color_multiple(t_fractol *f, int colors[4], int n);
+
 
 
 void	help_msg(t_fractol *f);
 int		err_msg(char *str1, int errno);
 
+
+void	move(t_fractol *f, double distance, char direction);
+
 int	key_event(int keycode, t_fractol *mlx);
+//static int	key_event_extend(int keycode, t_fractol *mlx);
 int	mouse_event(int keycode, int x, int y, t_fractol *mlx);
 
 

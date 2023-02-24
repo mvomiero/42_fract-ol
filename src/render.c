@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:51:19 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/24 12:25:12 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/24 13:05:04 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,14 @@ void	render(t_fractol *f)
 			pr = f->min_r + (double)x * (f->max_r - f->min_r) / WIDTH;
 			pi = f->max_i + (double)y * (f->min_i - f->max_i) / HEIGHT;
 			nb_iter = calculate_fractal(f, pr, pi);
-			if (nb_iter < 15)
+			/* if (nb_iter < 15)
 				set_pixel_color(f, x, y, 0x00CBEAEA);
 				//set_pixel_color(f, x, y, create_trgb(200,189,15,16));
 			else if (nb_iter < 30)
 				set_pixel_color(f, x, y, 0x882830D6);
 			else
-				set_pixel_color(f, x, y, 0xE3CAF4);
-				//set_pixel_color(f, x, y, f->palette[nb_iter]);
+				set_pixel_color(f, x, y, 0xE3CAF4); */
+			set_pixel_color(f, x, y, f->palette[nb_iter]);
 		}
 	}
 	mlx_put_image_to_window(f->mlx, f->win, f->img, 0, 0);

@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:47:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/23 20:01:26 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/24 13:24:00 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,53 @@
 // look at the manual, mlx_loop, you get a function
 // -> key_hook(int keycode,void *param);
 
+static int	key_event_extend(int keycode, t_fractol *mlx)
+{
+	if (keycode == KEY_ONE && mlx->set != MANDELBROT)
+		mlx->set = MANDELBROT;
+	else if (keycode == KEY_TWO && mlx->set != JULIA)
+		mlx->set = JULIA;
+	else
+		return (1);
+	get_complex_layout(mlx);
+	render(mlx);
+	return (0);
+}
+
 int	key_event(int keycode, t_fractol *mlx)
 {
-	printf("\n%d key\n", keycode);
-	if (keycode == 65307)
+	printf("\n%d\n", keycode);
+	if (keycode == KEY_ESC)
 	{
 		end_fractol(mlx);
 		return (0);
 	}
+/* 	else if (keycode == KEY_PLUS)
+		zoom(mlx, 0.5);
+	else if (keycode == KEY_MINUS)
+		zoom(mlx, 2); */
+	else if (keycode == KEY_UP || keycode == KEY_W)
+		move(mlx, 0.2, 'U');
+	else if (keycode == KEY_DOWN || keycode == KEY_S)
+		move(mlx, 0.2, 'D');
+	else if (keycode == KEY_LEFT || keycode == KEY_A)
+		move(mlx, 0.2, 'L');
+	else if (keycode == KEY_RIGHT || keycode == KEY_D)
+		move(mlx, 0.2, 'R');
+	else if (keycode == KEY_P)
+	{
+		mlx->color_pattern = PAOLA;
+		color_shift(mlx);
+	}
+	else if (!key_event_extend(keycode, mlx))
+		return (1);
+	else
+		return (1);
+	render(mlx);
 	return (0);
 }
+
+
 
 static void	zoom(t_fractol *f, double zoom)
 {
@@ -42,7 +79,7 @@ static void	zoom(t_fractol *f, double zoom)
 	f->max_i = f->min_i + zoom * center_i;
 }
 
-static void	move(t_fractol *f, double distance, char direction)
+void	move(t_fractol *f, double distance, char direction)
 {
 	double	center_r;
 	double	center_i;
