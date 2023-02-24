@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 15:13:55 by mvomiero          #+#    #+#              #
-#    Updated: 2023/02/24 13:55:15 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/02/24 15:32:13 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,8 +64,6 @@ $(OBJS): $(OBJ_PATH)
 
 $(OBJ_PATH):
 	@mkdir $(OBJ_PATH)
-	@mkdir $(OBJ_PATH)fractal_sets/
-	@mkdir $(OBJ_PATH)color_schemes/
 
 $(MLX):
 	@echo "Making MiniLibX..."
@@ -96,7 +94,7 @@ fclean: clean
 re: fclean all
 
 valgrind:
-	valgrind --leak-check=full ./fractol
+	valgrind --leak-check=full ./fractol mandelbrot
 
 man:
 	man minilibx-linux/man/man1/mlx.1

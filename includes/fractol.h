@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:16:46 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/24 13:25:51 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/24 16:12:17 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define HEIGHT 900
 
 
-# define MAX_ITERATIONS 50
+# define ITERATIONS 50
 
 // Fractal sets
 # define MANDELBROT 1
@@ -38,9 +38,9 @@
 
 # define COLOR 0xBA7CF0
 
-# define COLOR_1 0x000000
+# define COLOR_1 0xFFFFFF
 # define COLOR_2 0xDB23B3
-# define COLOR_3 0xFA8378
+# define COLOR_3 0xDB23B3
 # define COLOR_4 0xFFFFFF
 
 
@@ -62,6 +62,7 @@ typedef struct s_fractol
 	int		*palette;
 	int		color_pattern;
 	int		color;
+	int		iterations;
 }	t_fractol;
 
 void	init_struct(t_fractol *f);
@@ -76,7 +77,8 @@ void	render(t_fractol *f);
 void	get_complex_layout(t_fractol *f);
 
 
-int	mandelbrot(double cr, double ci);
+int	mandelbrot(t_fractol *f, double cr, double ci);
+
 void	reinit_img(t_fractol *f);
 
 

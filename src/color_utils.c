@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:50:51 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/24 12:53:03 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/24 16:21:36 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,21 @@ void	set_color_mono(t_fractol *f, int color)
 	color1 = 0x000000;
 	color2 = color;
 	i = 0;
-	while (i < MAX_ITERATIONS)
+	while (i < f->iterations)
 	{
 		j = 0;
-		while (j < MAX_ITERATIONS / 2)
+		while (j < f->iterations / 2)
 		{
-			fraction = (double)j / (MAX_ITERATIONS / 2);
+			fraction = (double)j / (f->iterations / 2);
 			f->palette[i + j] = interpolate(color1, color2, fraction);
 			j++;
 		}
 		color1 = color2;
-		color2 = 0xFFFFFF;
+		//color2 = 0xFFFFFF;
+		color2 = 0x000000;
 		i += j;
 	}
-	f->palette[MAX_ITERATIONS -1] = 0;
+	f->palette[f->iterations -1] = 0;
 }
 
 void	set_color_multiple(t_fractol *f, int colors[4], int n)
@@ -65,17 +66,17 @@ void	set_color_multiple(t_fractol *f, int colors[4], int n)
 
 	i = 0;
 	x = 0;
-	while (i < MAX_ITERATIONS)
+	while (i < f->iterations)
 	{
 		j = 0;
-		while ((i + j) < MAX_ITERATIONS && j < (MAX_ITERATIONS / (n - 1)))
+		while ((i + j) < f->iterations && j < (f->iterations / (n - 1)))
 		{
-			fraction = (double)j / (MAX_ITERATIONS / (n - 1));
+			fraction = (double)j / (f->iterations / (n - 1));
 			f->palette[i + j] = interpolate(colors[x], colors[x + 1], fraction);
 			j++;
 		}
 		x++;
 		i += j;
 	}
-	f->palette[MAX_ITERATIONS - 1] = 0;
+	f->palette[f->iterations - 1] = 0;
 }
