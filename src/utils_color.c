@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.c                                          :+:      :+:    :+:   */
+/*   utils_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/20 15:16:08 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/24 12:17:09 by mvomiero         ###   ########.fr       */
+/*   Created: 2023/02/24 11:57:30 by mvomiero          #+#    #+#             */
+/*   Updated: 2023/02/24 12:21:29 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-/* main:
-	main function.
- */
-int	main(int ac, char **av)
+int	create_trgb(int t, int r, int g, int b)
 {
-	t_fractol	f;
-
-	if (ac < 2)
-		help_msg(&f);
-	init_struct(&f);
-	parse_args(&f, ac, av);
-	init(&f);
-	render(&f);
-	mlx_key_hook(f.win, key_event, &f);
-	mlx_mouse_hook(f.win, mouse_event, &f);
-
-	mlx_loop(f.mlx);
+	return (t << 24 | r << 16 | g << 8 | b);
 }
 
+/* void	render_background(t_fractol *f, int color)
+{
+	int	i;
+	int	j;
+
+	if (f->win == NULL)
+		return ;
+	i = 0;
+	while (i < HEIGHT)
+	{
+		j = 0;
+		while (j < WIDTH)
+			mlx_pixel_put(f->mlx, f->win, j++, i, color);
+		++i;
+	}
+} */

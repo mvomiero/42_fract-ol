@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:16:46 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/23 20:02:01 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/24 12:10:02 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,11 @@ int	mouse_event(int keycode, int x, int y, t_fractol *mlx);
 void	clean_exit(int exit_code, t_fractol *f);
 
 int	end_fractol(t_fractol *mlx);
+
+int	create_trgb(int t, int r, int g, int b);
+void	render_background(t_fractol *f, int color);
+
+
 
 
 
