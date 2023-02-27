@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 15:13:55 by mvomiero          #+#    #+#              #
-#    Updated: 2023/02/24 18:08:04 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/02/27 15:44:06 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,14 +56,19 @@ OBJ_PATH	= obj/
 OBJ			= $(SRC:.c=.o)
 OBJS		= $(addprefix $(OBJ_PATH), $(OBJ))
 
-all: $(MLX) $(LIBFT) $(NAME)
+all: $(MLX) $(LIBFT) $(OBJ_PATH) $(NAME)
+
+$(NAME): $(OBJS)
+	@echo "Compiling fractol..."
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX) $(LIBFT) $(INC) -lXext -lX11 -lm
+	@echo "Fractol ready."
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	@echo "Compiling object files"
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 
-$(OBJS): $(OBJ_PATH)
-
 $(OBJ_PATH):
+	@echo "Generating obj folder"
 	@mkdir $(OBJ_PATH)
 
 $(MLX):
@@ -73,11 +78,6 @@ $(MLX):
 $(LIBFT):
 	@echo "Making libft..."
 	@make -sC $(LIBFT_PATH)
-
-$(NAME): $(OBJS)
-	@echo "Compiling fractol..."
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX) $(LIBFT) $(INC) -lXext -lX11 -lm
-	@echo "Fractol ready."
 
 bonus: all
 
