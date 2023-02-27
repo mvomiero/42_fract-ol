@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:47:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/27 17:04:20 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/27 18:39:41 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,62 +28,30 @@ static int	key_event_extend(int keycode, t_fractol *mlx)
 	return (0);
 }
 
-/* static void	zoom(t_fractol *f, double zoom)
-{
-	double	center_r;
-	double	center_i;
-
-	printf("\n max_r: %f, min_r: %f, max_i: %f, min_i: %f\n", f->max_r, f->min_r, f->max_i, f->min_i);
-
-
-	center_r = f->min_r - f->max_r;
-	//center_r = f->max_r - f->min_r;
-	center_i = f->max_i - f->min_i;
-	//center_i = f->min_i - f->max_i;
-	printf("\n cen_r: %f, cen_i: %f\n", center_r, center_i);
-	f->max_r = f->max_r + (center_r - zoom * center_r) / 2;
-	f->min_r = f->max_r + zoom * center_r;
-	f->min_i = f->min_i + (center_i - zoom * center_i) / 2;
-	f->max_i = f->min_i + zoom * center_i;
-	printf("\n max_r: %f, min_r: %f, max_i: %f, min_i: %f\n", f->max_r, f->min_r, f->max_i, f->min_i);
-} */
-
-/* static void	zoom(t_fractol *f, double zoom)
-{
-	double	center_r;
-	double	center_i;
-
-	printf("\n max_r: %f, min_r: %f, max_i: %f, min_i: %f\n", f->max_r, f->min_r, f->max_i, f->min_i);
-
-
-	center_r = f->min_r - f->max_r;
-	center_i = f->min_i - f->max_i;
-
-	printf("\n cen_r: %f, cen_i: %f\n", center_r, center_i);
-	f->max_r = f->max_r + (center_r - zoom * center_r) / 2;
-	//f->max_r = f->min_r - zoom * center_r;
-	f->min_r = f->max_r + zoom * center_r;
-	f->max_i = f->max_i + (center_i - zoom * center_i) / 2;
-	f->min_i = f->max_i + zoom * center_i;
-	//f->min_i = f->min_i + (center_i - zoom * center_i) / 2;
-	//f->max_i = f->min_i + zoom * center_i;
-	printf("\n max_r: %f, min_r: %f, max_i: %f, min_i: %f\n", f->max_r, f->min_r, f->max_i, f->min_i);
-} */
-
+/* zoom:
+	resizes the window getting new max and min values for both 
+	real (x) and immaginary (y) numbers.
+	It gets first the range of the two numbers, then multiplicate
+	it by the zoom factor, then finds the new coordinates of the 
+	new zoomed frame.
+	the zoom factor has to be 1/zoom because it goes inverted respect 
+	to the image: we want a bigger image -> frame has to be reduced
+ */
 static void	zoom(t_fractol *f, double zoom)
 {
 	double	range_r;
 	double	range_i;
 	double	range_zoomed_r;
 	double	range_zoomed_i;
+	double	zoom_factor;
+
+	zoom_factor = 1 / zoom;
 
 	printf("\n max_r: %f, min_r: %f, max_i: %f, min_i: %f\n", f->max_r, f->min_r, f->max_i, f->min_i);
-
-
 	range_r = f->max_r - f->min_r;
 	range_i = f->max_i - f->min_i;
-	range_zoomed_r = range_r * zoom;
-	range_zoomed_i = range_i * zoom;
+	range_zoomed_r = range_r * zoom_factor;
+	range_zoomed_i = range_i * zoom_factor;
 
 	printf("\n cen_r: %f, cen_i: %f\n", range_r, range_i);
 	f->max_r = f->max_r - (range_r - range_zoomed_r) / 2;
@@ -92,29 +60,6 @@ static void	zoom(t_fractol *f, double zoom)
 	f->min_i = f->max_i - range_zoomed_i;
 	printf("\n max_r: %f, min_r: %f, max_i: %f, min_i: %f\n", f->max_r, f->min_r, f->max_i, f->min_i);
 }
-
-/* static void	zoom(t_fractol *f, double zoom)
-{
-	double	center_r;
-	double	center_i;
-
-	printf("\n max_r: %f, min_r: %f, max_i: %f, min_i: %f\n", f->max_r, f->min_r, f->max_i, f->min_i);
-
-
-	center_r = f->min_r - f->max_r;
-	center_i = f->min_i - f->max_i;
-
-	printf("\n cen_r: %f, cen_i: %f\n", center_r, center_i);
-	f->max_r = f->max_r + (center_r - zoom * center_r) / 2;
-	//f->max_r = f->min_r - zoom * center_r;
-	f->min_r = f->max_r + zoom * center_r;
-	f->max_i = f->max_i + (center_i - zoom * center_i) / 2;
-	f->min_i = f->max_i + zoom * center_i;
-	//f->min_i = f->min_i + (center_i - zoom * center_i) / 2;
-	//f->max_i = f->min_i + zoom * center_i;
-	printf("\n max_r: %f, min_r: %f, max_i: %f, min_i: %f\n", f->max_r, f->min_r, f->max_i, f->min_i);
-} */
-
 
 int	key_event(int keycode, t_fractol *mlx)
 {
@@ -127,10 +72,6 @@ int	key_event(int keycode, t_fractol *mlx)
 	else if (keycode == KEY_PLUS)
 	{
 		mlx->iterations += 20;
-/* 		free(mlx->palette);
-		mlx->palette = ft_calloc((mlx->iterations + 1), sizeof(int));
-		if (!(mlx->palette))
-			clean_exit(err_msg("error initializing color scheme.", 1), mlx); */
 		reinit_img(mlx);
 		color_shift(mlx);
 	}
@@ -166,55 +107,73 @@ int	key_event(int keycode, t_fractol *mlx)
 }
 
 
-
-
-void	move(t_fractol *f, double distance, char direction)
+/* move:
+	depending the direction char the function "moves" in the different directions.
+	The moving is actually done by shifting the max_ and min_ depending the 
+	given move factor calculated int the mouse_event function.
+ */
+void	move(t_fractol *f, double move_factor, char direction)
 {
-	double	center_r;
-	double	center_i;
+	double	range_r;
+	double	range_i;
 
-	center_r = f->max_r - f->min_r;
-	center_i = f->max_i - f->min_i;
+	range_r = f->max_r - f->min_r;
+	range_i = f->max_i - f->min_i;
 	if (direction == 'R')
 	{
-		f->min_r += center_r * distance;
-		f->max_r += center_r * distance;
+		f->min_r += range_r * move_factor;
+		f->max_r += range_r * move_factor;
 	}
 	else if (direction == 'L')
 	{
-		f->min_r -= center_r * distance;
-		f->max_r -= center_r * distance;
+		f->min_r -= range_r * move_factor;
+		f->max_r -= range_r * move_factor;
 	}
 	else if (direction == 'D')
 	{
-		f->min_i -= center_i * distance;
-		f->max_i -= center_i * distance;
+		f->min_i -= range_i * move_factor;
+		f->max_i -= range_i * move_factor;
 	}
 	else if (direction == 'U')
 	{
-		f->min_i += center_i * distance;
-		f->max_i += center_i * distance;
+		f->min_i += range_i * move_factor;
+		f->max_i += range_i * move_factor;
 	}
 }
-
+/* mouse_event:
+	handels the zoom in and out, with the mouse
+	- to zoom in: calls the zoom function first, the move function after
+	To call the move function in the right way, it has to make a comparison
+	between where the position of mouse is (x,y) in the current image and 
+	the position in the new window. It calculates then the move_factor you will
+	pass as argument to the move functon.
+	move_x corresponds to the scaled value of x in the new resized 
+	(scaled) image. It is a factor is passed to the move function, where it 
+	is multiplied in order to get the new values of max_r min_r
+ */
 int	mouse_event(int keycode, int x, int y, t_fractol *mlx)
 {
+	double	move_x;
+	double	move_y;
+	double	zoom_factor;
+	
 	if (keycode == MOUSE_WHEEL_UP)
 	{
-		zoom(mlx, 0.5);
-		x -= WIDTH / 2;
-		y -= HEIGHT / 2;
+		zoom_factor = 2;
+		zoom(mlx, zoom_factor);
+		move_x = ((double)x - WIDTH / (zoom_factor)) / WIDTH;
+		move_y = ((double)y - HEIGHT / (zoom_factor)) / HEIGHT;
 		if (x < 0)
-			move(mlx, (double)x * -1 / WIDTH, 'L');
+			move(mlx, -(move_x), 'L');
 		else if (x > 0)
-			move(mlx, (double)x / WIDTH, 'R');
+			move(mlx, (move_x), 'R');
 		if (y < 0)
-			move(mlx, (double)y * -1 / HEIGHT, 'U');
+			move(mlx, -(move_y), 'U');
 		else if (y > 0)
-			move (mlx, (double)y / HEIGHT, 'D');
+			move (mlx, (move_y), 'D');
 	}
 	else if (keycode == MOUSE_WHEEL_DOWN)
-		zoom(mlx, 2);
+		zoom(mlx, 0.5);
 	else
 		return (0);
 	render(mlx);
