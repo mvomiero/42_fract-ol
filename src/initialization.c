@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:07:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/24 15:45:17 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/27 16:20:39 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	init_struct(t_fractol *f)
 	f->color_pattern = LUISA;
 	f->color = 0;
 	f->iterations = ITERATIONS;
-
 }
 
 static void	init_img(t_fractol *f)
@@ -85,8 +84,8 @@ void	get_complex_layout(t_fractol *f)
 	else
 	{
 		f->min_r = -2.0;
-		f->max_r = 1.0;
-		f->max_i = -1.5;
-		f->min_i = f->max_i + (f->max_r - f->min_r) * HEIGHT / WIDTH;
+		f->max_r = 2.0;
+		f->min_i = -2.0;
+		f->max_i = f->min_i + (f->max_r - f->min_r) * HEIGHT / WIDTH;
 	}
 }

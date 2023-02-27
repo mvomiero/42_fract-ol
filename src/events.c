@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:47:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/24 16:43:13 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:04:20 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,92 @@ static int	key_event_extend(int keycode, t_fractol *mlx)
 	return (0);
 }
 
-static void	zoom(t_fractol *f, double zoom)
+/* static void	zoom(t_fractol *f, double zoom)
 {
 	double	center_r;
 	double	center_i;
 
 	printf("\n max_r: %f, min_r: %f, max_i: %f, min_i: %f\n", f->max_r, f->min_r, f->max_i, f->min_i);
 
+
 	center_r = f->min_r - f->max_r;
+	//center_r = f->max_r - f->min_r;
 	center_i = f->max_i - f->min_i;
-	printf("\n cen_r: %f, cen_r: %f\n", center_r, center_i);
+	//center_i = f->min_i - f->max_i;
+	printf("\n cen_r: %f, cen_i: %f\n", center_r, center_i);
 	f->max_r = f->max_r + (center_r - zoom * center_r) / 2;
 	f->min_r = f->max_r + zoom * center_r;
 	f->min_i = f->min_i + (center_i - zoom * center_i) / 2;
 	f->max_i = f->min_i + zoom * center_i;
+	printf("\n max_r: %f, min_r: %f, max_i: %f, min_i: %f\n", f->max_r, f->min_r, f->max_i, f->min_i);
+} */
+
+/* static void	zoom(t_fractol *f, double zoom)
+{
+	double	center_r;
+	double	center_i;
+
+	printf("\n max_r: %f, min_r: %f, max_i: %f, min_i: %f\n", f->max_r, f->min_r, f->max_i, f->min_i);
+
+
+	center_r = f->min_r - f->max_r;
+	center_i = f->min_i - f->max_i;
+
+	printf("\n cen_r: %f, cen_i: %f\n", center_r, center_i);
+	f->max_r = f->max_r + (center_r - zoom * center_r) / 2;
+	//f->max_r = f->min_r - zoom * center_r;
+	f->min_r = f->max_r + zoom * center_r;
+	f->max_i = f->max_i + (center_i - zoom * center_i) / 2;
+	f->min_i = f->max_i + zoom * center_i;
+	//f->min_i = f->min_i + (center_i - zoom * center_i) / 2;
+	//f->max_i = f->min_i + zoom * center_i;
+	printf("\n max_r: %f, min_r: %f, max_i: %f, min_i: %f\n", f->max_r, f->min_r, f->max_i, f->min_i);
+} */
+
+static void	zoom(t_fractol *f, double zoom)
+{
+	double	range_r;
+	double	range_i;
+	double	range_zoomed_r;
+	double	range_zoomed_i;
+
+	printf("\n max_r: %f, min_r: %f, max_i: %f, min_i: %f\n", f->max_r, f->min_r, f->max_i, f->min_i);
+
+
+	range_r = f->max_r - f->min_r;
+	range_i = f->max_i - f->min_i;
+	range_zoomed_r = range_r * zoom;
+	range_zoomed_i = range_i * zoom;
+
+	printf("\n cen_r: %f, cen_i: %f\n", range_r, range_i);
+	f->max_r = f->max_r - (range_r - range_zoomed_r) / 2;
+	f->min_r = f->max_r - range_zoomed_r;
+	f->max_i = f->max_i - (range_i - range_zoomed_i) / 2;
+	f->min_i = f->max_i - range_zoomed_i;
+	printf("\n max_r: %f, min_r: %f, max_i: %f, min_i: %f\n", f->max_r, f->min_r, f->max_i, f->min_i);
 }
+
+/* static void	zoom(t_fractol *f, double zoom)
+{
+	double	center_r;
+	double	center_i;
+
+	printf("\n max_r: %f, min_r: %f, max_i: %f, min_i: %f\n", f->max_r, f->min_r, f->max_i, f->min_i);
+
+
+	center_r = f->min_r - f->max_r;
+	center_i = f->min_i - f->max_i;
+
+	printf("\n cen_r: %f, cen_i: %f\n", center_r, center_i);
+	f->max_r = f->max_r + (center_r - zoom * center_r) / 2;
+	//f->max_r = f->min_r - zoom * center_r;
+	f->min_r = f->max_r + zoom * center_r;
+	f->max_i = f->max_i + (center_i - zoom * center_i) / 2;
+	f->min_i = f->max_i + zoom * center_i;
+	//f->min_i = f->min_i + (center_i - zoom * center_i) / 2;
+	//f->max_i = f->min_i + zoom * center_i;
+	printf("\n max_r: %f, min_r: %f, max_i: %f, min_i: %f\n", f->max_r, f->min_r, f->max_i, f->min_i);
+} */
 
 
 int	key_event(int keycode, t_fractol *mlx)
