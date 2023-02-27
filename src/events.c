@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:47:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/27 18:39:41 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/27 19:31:19 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,7 @@ int	mouse_event(int keycode, int x, int y, t_fractol *mlx)
 	double	move_y;
 	double	zoom_factor;
 	
+	printf("\n%d\n", keycode);
 	if (keycode == MOUSE_WHEEL_UP)
 	{
 		zoom_factor = 2;
@@ -171,6 +172,15 @@ int	mouse_event(int keycode, int x, int y, t_fractol *mlx)
 			move(mlx, -(move_y), 'U');
 		else if (y > 0)
 			move (mlx, (move_y), 'D');
+	}
+	else if (keycode == MOUSE_BTN)
+	{
+		mlx->kr = mlx->min_r + (double)x * (mlx->max_r - mlx->min_r) / WIDTH;
+		mlx->ki = mlx->max_i + (double)y * (mlx->min_i - mlx->max_i) / HEIGHT;
+		mlx->set = JULIA;
+		get_complex_layout(mlx);
+		reinit_img(mlx);
+		color_shift(mlx);
 	}
 	else if (keycode == MOUSE_WHEEL_DOWN)
 		zoom(mlx, 0.5);
