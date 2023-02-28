@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:16:46 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/28 18:01:03 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/28 19:14:07 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 
 # include "mlx.h"
 // for the keys definitions I could have included those ones
-//# include <X11/keysym.h>
+//# include <X11/keysym.h> 		
 //# include <X11/X.h>
 # include "libft.h"
 # include "keys.h"
 # include <stdio.h>
 # include <math.h>
 
-# define WIDTH 900
+# define WIDTH 600
 # define HEIGHT 900
 
 
@@ -66,8 +66,8 @@ typedef struct s_fractol
 	double	max_r;
 	double	min_i;
 	double	max_i;
-	double	kr;
-	double	ki;
+	double	cr;
+	double	ci;
 	int		*palette;
 	int		color_pattern;
 	int		color;

@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 15:13:55 by mvomiero          #+#    #+#              #
-#    Updated: 2023/02/27 15:46:29 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/02/28 19:15:36 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ LIBFT		= $(LIBFT_PATH)$(LIBFT_NAME)
 INC			=	-I ./includes/\
 				-I ./libft/\
 				-I ./minilibx-linux/
+HEADERS		=	./includes/
 
 # Sources
 SRC_PATH	=	src/

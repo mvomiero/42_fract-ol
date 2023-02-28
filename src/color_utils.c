@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:50:51 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/24 18:21:26 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/28 18:37:22 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,9 @@ void	set_color_mono(t_fractol *f, int color)
 			j++;
 		}
 		color1 = color2;
-		//color2 = 0xFFFFFF;
 		color2 = 0x000000;
 		i += j;
 	}
-	//f->palette[f->iterations -1] = 0;
 }
 
 void	set_color_math(t_fractol *f, int color)
@@ -79,10 +77,8 @@ void	set_color_math(t_fractol *f, int color)
 		}
 		color1 = color2;
 		color2 = 0x000000;
-		//color2 = 0x000000;
 		i += j;
 	}
-	//f->palette[f->iterations -1] = 0;
 }
 
 void	set_color_multiple(t_fractol *f, int colors[4], int n)
@@ -106,6 +102,5 @@ void	set_color_multiple(t_fractol *f, int colors[4], int n)
 		x++;
 		i += j;
 	}
-	//f->palette[f->iterations - 1] = 0;
 }
 

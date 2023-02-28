@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:52:55 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/24 17:02:35 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/28 18:37:50 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@ void	color_shift(t_fractol *f)
 		set_color_multiple(f, (int [4]){COLOR_1, COLOR_2, COLOR_3, COLOR_4}, 4);
 	else if (f->color_pattern == RANDOM)
 		set_color_math(f, COLOR);
-/* 		set_color_multiple(f, (int [4]){0x000000, alt_color,
-			get_percent_color(f->color, 50), 0xFFFFFF}, 4); */
 	else
 		return ;
-	//	color_shift_striped(f);
 }

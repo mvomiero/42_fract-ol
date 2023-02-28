@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:47:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/28 18:11:43 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/28 18:42:55 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // look at the manual, mlx_loop, you get a function
 // -> key_hook(int keycode,void *param);
 
-static int	key_event_extend(int keycode, t_fractol *mlx)
+static int	key_event_sets(int keycode, t_fractol *mlx)
 {
 	if (keycode == KEY_ONE && mlx->set != MANDELBROT)
 		mlx->set = MANDELBROT;
@@ -24,6 +24,22 @@ static int	key_event_extend(int keycode, t_fractol *mlx)
 	else
 		return (1);
 	get_complex_layout(mlx);
+	render(mlx);
+	return (0);
+}
+
+static int	key_event_colors(int keycode, t_fractol *mlx)
+{
+	if (keycode == KEY_P)
+	{
+		mlx->color_pattern = PAOLA;
+		color_shift(mlx);
+	}
+	else if (keycode == KEY_R)
+	{
+		mlx->color_pattern = RANDOM;
+		color_shift(mlx);
+	}
 	render(mlx);
 	return (0);
 }
@@ -46,24 +62,18 @@ static void	zoom(t_fractol *f, double zoom)
 	double	zoom_factor;
 
 	zoom_factor = 1 / zoom;
-
-	printf("\n max_r: %f, min_r: %f, max_i: %f, min_i: %f\n", f->max_r, f->min_r, f->max_i, f->min_i);
 	range_r = f->max_r - f->min_r;
 	range_i = f->max_i - f->min_i;
 	range_zoomed_r = range_r * zoom_factor;
 	range_zoomed_i = range_i * zoom_factor;
-
-	printf("\n cen_r: %f, cen_i: %f\n", range_r, range_i);
 	f->max_r = f->max_r - (range_r - range_zoomed_r) / 2;
 	f->min_r = f->max_r - range_zoomed_r;
 	f->max_i = f->max_i - (range_i - range_zoomed_i) / 2;
 	f->min_i = f->max_i - range_zoomed_i;
-	printf("\n max_r: %f, min_r: %f, max_i: %f, min_i: %f\n", f->max_r, f->min_r, f->max_i, f->min_i);
 }
 
 int	key_event(int keycode, t_fractol *mlx)
 {
-	printf("\n%d\n", keycode);
 	if (keycode == KEY_ESC)
 	{
 		end_fractol(mlx);
@@ -75,30 +85,13 @@ int	key_event(int keycode, t_fractol *mlx)
 		reinit_img(mlx);
 		color_shift(mlx);
 	}
-
 	else if (keycode == KEY_MINUS)
 		zoom(mlx, 2);
 	else if (keycode == KEY_E)
 		get_complex_layout(mlx);
-	/* else if (keycode == KEY_UP || keycode == KEY_W)
-		move(mlx, 0.2, 'U');
-	else if (keycode == KEY_DOWN || keycode == KEY_S)
-		move(mlx, 0.2, 'D');
-	else if (keycode == KEY_LEFT || keycode == KEY_A)
-		move(mlx, 0.2, 'L');
-	else if (keycode == KEY_RIGHT || keycode == KEY_D)
-		move(mlx, 0.2, 'R'); */
-	else if (keycode == KEY_P)
-	{
-		mlx->color_pattern = PAOLA;
-		color_shift(mlx);
-	}
-	else if (keycode == KEY_R)
-	{
-		mlx->color_pattern = RANDOM;
-		color_shift(mlx);
-	}
-	else if (!key_event_extend(keycode, mlx))
+	else if (!key_event_sets(keycode, mlx))
+		return (1);
+	else if (!key_event_colors(keycode, mlx))
 		return (1);
 	else
 		return (1);
@@ -149,8 +142,8 @@ int	mouse_event(int keycode, int x, int y, t_fractol *mlx)
 	}
 	else if (keycode == MOUSE_BTN)
 	{
-		mlx->kr = mlx->min_r + (double)x * (mlx->max_r - mlx->min_r) / WIDTH;
-		mlx->ki = mlx->max_i + (double)y * (mlx->min_i - mlx->max_i) / HEIGHT;
+		mlx->cr = mlx->min_r + (double)x * (mlx->max_r - mlx->min_r) / WIDTH;
+		mlx->ci = mlx->max_i + (double)y * (mlx->min_i - mlx->max_i) / HEIGHT;
 		mlx->set = JULIA;
 		get_complex_layout(mlx);
 		reinit_img(mlx);

@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:18:42 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/21 17:57:42 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/28 18:34:07 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,19 @@ static void	get_julia_init_values(t_fractol *f, int ac, char **av)
 {
 	if (f->set != JULIA || ac == 2)
 	{
-		f->kr = -0.766667;
-		f->ki = -0.090000;
+		f->cr = -0.766667;
+		f->ci = -0.090000;
 		return ;
 	}
 	if (ac == 3)
 		help_msg(f);
 	if (!ft_strchr(av[2], '.') || !ft_strchr(av[3], '.'))
 		help_msg(f);
-	f->kr = ft_atof(av[2]);
-	f->ki = ft_atof(av[3]);
-	if (f->kr > 2.0 || f->kr < -2.0)
+	f->cr = ft_atof(av[2]);
+	f->ci = ft_atof(av[3]);
+	if (f->cr > 2.0 || f->cr < -2.0)
 		help_msg(f);
-	if (f->ki >= 2.0 || f->ki <= -2.0)
+	if (f->ci >= 2.0 || f->ci <= -2.0)
 		help_msg(f);
 }
 
