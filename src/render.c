@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:51:19 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/27 15:43:45 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:25:57 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ static int	calculate_fractal(t_fractol *f, double pr, double pi)
 	return (nb_iter);
 }
 
+/* render:
+	converts the pixel real and imaginary (x, y) coordinates into complex 
+	numbers (made of pr and pi). The conversion is made thanks the proportion 
+	between the end of the set and the size of the window.
+	The color is then set for every pixel-complex
+	number and the image rendered to the window.
+ */
 void	render(t_fractol *f)
 {
 	int		x;
@@ -49,13 +56,6 @@ void	render(t_fractol *f)
 			pr = f->min_r + (double)x * (f->max_r - f->min_r) / WIDTH;
 			pi = f->max_i + (double)y * (f->min_i - f->max_i) / HEIGHT;
 			nb_iter = calculate_fractal(f, pr, pi);
-			/* if (nb_iter < 15)       
-				set_pixel_color(f, x, y, 0x000000);    
-				//set_pixel_color(f, x, y, create_trgb(200,189,15,16));
-			else if (nb_iter < 30)
-				set_pixel_color(f, x, y, 0x882830D6);
-			else
-				set_pixel_color(f, x, y, 0xE3CAF4); */
 			if (nb_iter > f->iterations - 1)
 				set_pixel_color(f, x, y, 0xFFFFFF);
 			else
