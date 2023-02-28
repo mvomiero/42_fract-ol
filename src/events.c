@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:47:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/27 19:31:19 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/28 12:59:35 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,6 @@ int	key_event(int keycode, t_fractol *mlx)
 	render(mlx);
 	return (0);
 }
-
 
 /* move:
 	depending the direction char the function "moves" in the different directions.
