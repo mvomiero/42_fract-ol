@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:07:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/27 16:20:39 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/28 15:10:05 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,18 +74,11 @@ void	init(t_fractol *f)
 
 void	get_complex_layout(t_fractol *f)
 {
-	if (f->set == JULIA)
-	{
 		f->min_r = -2.0;
 		f->max_r = 2.0;
+
 		f->min_i = -2.0;
+		//f->max_i = 2;
 		f->max_i = f->min_i + (f->max_r - f->min_r) * HEIGHT / WIDTH;
-	}
-	else
-	{
-		f->min_r = -2.0;
-		f->max_r = 2.0;
-		f->min_i = -2.0;
-		f->max_i = f->min_i + (f->max_r - f->min_r) * HEIGHT / WIDTH;
-	}
+		printf("\n max_i %f\n", f->max_i);
 }

@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:16:46 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/24 18:06:37 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:03:47 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@
 
 # define COLOR 0xBA7FF0
 
-# define COLOR_1 0xD90B6B
-# define COLOR_2 0xD90B6B
-# define COLOR_3 0x249EE0
+# define COLOR_1 0x2F4AE0
+# define COLOR_2 0xE03B02
+# define COLOR_3 0x742FE0
 # define COLOR_4 0xBF2C1F
 
 
