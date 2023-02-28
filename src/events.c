@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:47:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/28 12:59:35 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/28 18:11:43 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,38 +139,13 @@ void	move(t_fractol *f, double move_factor, char direction)
 		f->max_i += range_i * move_factor;
 	}
 }
-/* mouse_event:
-	handels the zoom in and out, with the mouse
-	- to zoom in: calls the zoom function first, the move function after
-	To call the move function in the right way, it has to make a comparison
-	between where the position of mouse is (x,y) in the current image and 
-	the position in the new window. It calculates then the move_factor you will
-	pass as argument to the move functon.
-	move_x corresponds to the scaled value of x in the new resized 
-	(scaled) image. It is a factor is passed to the move function, where it 
-	is multiplied in order to get the new values of max_r min_r
- */
+
 int	mouse_event(int keycode, int x, int y, t_fractol *mlx)
 {
-	double	move_x;
-	double	move_y;
-	double	zoom_factor;
-	
 	printf("\n%d\n", keycode);
 	if (keycode == MOUSE_WHEEL_UP)
 	{
-		zoom_factor = 2;
-		zoom(mlx, zoom_factor);
-		move_x = ((double)x - WIDTH / (zoom_factor)) / WIDTH;
-		move_y = ((double)y - HEIGHT / (zoom_factor)) / HEIGHT;
-		if (x < 0)
-			move(mlx, -(move_x), 'L');
-		else if (x > 0)
-			move(mlx, (move_x), 'R');
-		if (y < 0)
-			move(mlx, -(move_y), 'U');
-		else if (y > 0)
-			move (mlx, (move_y), 'D');
+		mouse_zoom(x, y, mlx);
 	}
 	else if (keycode == MOUSE_BTN)
 	{
@@ -186,5 +161,46 @@ int	mouse_event(int keycode, int x, int y, t_fractol *mlx)
 	else
 		return (0);
 	render(mlx);
+	return (0);
+}
+
+/* mouse_zoom:
+	first zooms in and gets so new max and min values.
+	finds then a factor that represents the absolute distance of the point from 
+	the beginning.
+	factor_x = x - WIDTH / (zoom_factor) / WIDTH;
+	factor_x = x - (center point) / WIDTH;
+	factor_x = (general position of x related to the center) / WIDTH;
+	factor_x = absolute position of x in a general frame;
+
+	going then to the move function:
+	f->min_r += range_r * move_factor;
+	f->min_r += range_r * factor_x;
+	f->min_r += range_r * absolute position of x in a general frame;
+	f->min_r =  min_r + range_r * absolute position of x in a general frame;
+	f->min_r =  min_r + relative position of x in the particular new frame;
+
+	so basically we find how distant is in an absolute way the point (x,y) and 
+	multiplicate that factor for the new frame value...it will be the value we 
+	have to move the frame...that will be of course after the move just centered
+ */
+int	mouse_zoom(int x, int y, t_fractol *mlx)
+{
+	double	move_x;
+	double	move_y;
+	double	zoom_factor;
+	
+	zoom_factor = 2;
+	zoom(mlx, zoom_factor);
+	move_x = ((double)x - WIDTH / (zoom_factor)) / WIDTH;
+	move_y = ((double)y - HEIGHT / (zoom_factor)) / HEIGHT;
+	if (x < 0)
+		move(mlx, -(move_x), 'L');
+	else if (x > 0)
+		move(mlx, (move_x), 'R');
+	if (y < 0)
+		move(mlx, -(move_y), 'U');
+	else if (y > 0)
+		move (mlx, (move_y), 'D');
 	return (0);
 }

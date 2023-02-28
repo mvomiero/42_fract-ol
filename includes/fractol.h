@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:16:46 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/28 16:03:47 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/02/28 18:01:03 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ void	move(t_fractol *f, double distance, char direction);
 int	key_event(int keycode, t_fractol *mlx);
 //static int	key_event_extend(int keycode, t_fractol *mlx);
 int	mouse_event(int keycode, int x, int y, t_fractol *mlx);
+int	mouse_zoom(int x, int y, t_fractol *mlx);
+
 
 
 
