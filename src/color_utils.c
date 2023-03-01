@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:50:51 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/28 18:37:22 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/01 11:19:27 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,4 +103,3 @@ void	set_color_multiple(t_fractol *f, int colors[4], int n)
 		i += j;
 	}
 }
-

@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:16:46 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/28 19:14:07 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/01 11:32:12 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	parse_args(t_fractol *f, int ac, char **av);
 void	init(t_fractol *f);
 void	render(t_fractol *f);
 
-void	get_complex_layout(t_fractol *f);
+void	get_layout(t_fractol *f);
 
 
 int	mandelbrot(t_fractol *f, double cr, double ci);
@@ -100,6 +100,7 @@ void	set_color_mono(t_fractol *f, int color);
 void	set_color_multiple(t_fractol *f, int colors[4], int n);
 void	set_color_math(t_fractol *f, int color);
 
+void	zoom(t_fractol *f, double zoom);
 
 
 void	help_msg(t_fractol *f);

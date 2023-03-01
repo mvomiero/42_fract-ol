@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 15:13:55 by mvomiero          #+#    #+#              #
-#    Updated: 2023/02/28 19:15:36 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/03/01 11:31:28 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,8 @@ SRC			=	exit.c \
 				utils_color.c \
 				color.c \
 				color_utils.c \
-				fract_julia.c
+				fract_julia.c \
+				zoom.c
 
 SRCS		= $(addprefix $(SRC_PATH), $(SRC))
 

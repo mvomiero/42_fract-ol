@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:15:46 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/23 17:26:26 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/01 11:24:24 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@
 	}
   	mlx_loop(mlx);
 } */
-
 
 /* // to use a whatever key to close the opened window
 

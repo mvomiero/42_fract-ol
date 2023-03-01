@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:51:19 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/28 16:07:27 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/01 11:28:00 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static void	set_pixel_color(t_fractol *f, int x, int y, int color)
 {
-		f->buf[x * 4 + y * WIDTH * 4] = color;
-		f->buf[x * 4 + y * WIDTH * 4 + 1] = color >> 8;
-		f->buf[x * 4 + y * WIDTH * 4 + 2] = color >> 16;
-		f->buf[x * 4 + y * WIDTH * 4 + 3] = color >> 24;
+	f->buf[x * 4 + y * WIDTH * 4] = color;
+	f->buf[x * 4 + y * WIDTH * 4 + 1] = color >> 8;
+	f->buf[x * 4 + y * WIDTH * 4 + 2] = color >> 16;
+	f->buf[x * 4 + y * WIDTH * 4 + 3] = color >> 24;
 }
 
 static int	calculate_fractal(t_fractol *f, double pr, double pi)
@@ -59,7 +59,7 @@ void	render(t_fractol *f)
 			if (nb_iter > f->iterations - 1)
 				set_pixel_color(f, x, y, 0xFFFFFF);
 			else
-			set_pixel_color(f, x, y, f->palette[nb_iter]);
+				set_pixel_color(f, x, y, f->palette[nb_iter]);
 		}
 	}
 	mlx_put_image_to_window(f->mlx, f->win, f->img, 0, 0);
