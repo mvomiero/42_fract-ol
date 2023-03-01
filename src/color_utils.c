@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:50:51 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/01 17:49:13 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/01 19:12:32 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,83 +55,6 @@ void	set_color_mono(t_fractol *f, int color)
 	}
 }
 
-void	set_color_bi(t_fractol *f, int color)
-{
-/* 	int		i;
-	double	fraction;
-	int		color1;
-	int		color2;
-
-	color1 = 0x000000;
-	color2 = color;
-	i = 0;
-	while (i < f->iterations / 2)
-	{
-		fraction = (double)i / (f->iterations / 2);
-		f->palette[i] = interpolate(color1, color2, fraction);
-		i++;
-	}
-	while (i < f->iterations)
-	{
-		fraction = (double)i / (f->iterations / 2);
-		f->palette[i] = interpolate(color1, color2, fraction);
-		i++;
-	} */
-/* 		int		i;
-	int		j;
-	double	fraction;
-	int		color1;
-	int		color2;
-
-	//color1 = 0x000000;
-	color2 = color;
-	color1 = interpolate(0x000000, color2, 0.5);
-	i = 0;
-	while (i < f->iterations)
-	{
-		j = 0;
-		while (j < f->iterations / 2)
-		{
-			fraction = (double)j / (f->iterations / 2);
-			f->palette[i + j] = interpolate(color1, color2, fraction);
-			j++;
-		}
-		i += j;
-		j = 0;
-		while (i < f->iterations)
-		{
-			fraction = (double)j / (f->iterations / 2);
-			f->palette[i] = interpolate(color1, color2, fraction);
-			i++;
-			j++;
-		}
-	} */
-		int		i;
-	int		j;
-	double	fraction;
-	int		color1;
-	int		color2;
-
-	color1 = 0xFFFFFF;
-	color2 = color;
-	i = 0;
-	while (i < f->iterations)
-	{
-		j = 0;
-		while (j % 7 != 0)
-		{
-			fraction = (double)j / (f->iterations / 7);
-			f->palette[i + j] = interpolate(color1, color2, fraction);
-			j++;
-		}
-		j++;
-		color1 = color2;
-		color2 = 0xFFFFFF;
-		i += j;
-	}
-
-}
-
 void	set_color_math(t_fractol *f, int color)
 {
 	int		i;
@@ -158,7 +81,7 @@ void	set_color_math(t_fractol *f, int color)
 	}
 }
 
-void	set_color_multiple(t_fractol *f, int colors[4], int n)
+void	set_color_multiple(t_fractol *f, int colors[3], int n)
 {
 	int		i;
 	int		j;
@@ -191,7 +114,6 @@ void	set_color_bianca(t_fractol *f, int colors[2], int n)
 
 	color1 = colors[0];
 	color2 = colors[1];
-
 	i = 0;
 	while (i < f->iterations)
 	{
@@ -205,6 +127,5 @@ void	set_color_bianca(t_fractol *f, int colors[2], int n)
 		color1 = colors[0];
 		color2 = colors[1];
 		i += j;
-		//n /=2 ;
 	}
 }

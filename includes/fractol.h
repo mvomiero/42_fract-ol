@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:16:46 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/01 17:53:13 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/01 18:54:52 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,16 @@
 # define RANDOM 5
 
 # define COLOR 0xFC0FDD
-//# define COLOR 0x2BEB23
 
-# define COLOR_1 0x2F4AE0
+# define COLOR_1 0xF6CC22
 # define COLOR_2 0xE03B02
-# define COLOR_3 0x742FE0
+# define COLOR_3 0x8513D4
 # define COLOR_4 0xBF2C1F
 # define COLOR_5 0x8703FE
 # define COLOR_6 0x5350FF
 # define COLOR_7 0xE5FE03
 # define COLOR_8 0xCC0033
-# define COLOR_9 0x6B5400
+# define COLOR_9 0x000F24
 # define WHITE 0xFFFFFF
 # define BLACK 0x000000
 
@@ -111,7 +110,7 @@ void	set_color_bianca(t_fractol *f, int colors[2], int n);
 
 
 
-void	set_color_multiple(t_fractol *f, int colors[4], int n);
+void	set_color_multiple(t_fractol *f, int colors[3], int n);
 void	set_color_math(t_fractol *f, int color);
 
 void	zoom(t_fractol *f, double zoom);

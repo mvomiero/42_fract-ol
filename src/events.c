@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:47:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/01 18:05:14 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/01 19:09:36 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ static int	key_event_sets(int keycode, t_fractol *mlx)
 static int	key_event_color_patterns(int keycode, t_fractol *mlx)
 {
 	if (keycode == KEY_P)
+	{
+		mlx->color_foreground = COLOR_1;
 		mlx->color_pattern = PAOLA;
+	}
 	else if (keycode == KEY_R)
 		mlx->color_pattern = RANDOM;
 	else if (keycode == KEY_L)
@@ -105,11 +108,8 @@ int	key_event(int keycode, t_fractol *mlx)
 		end_fractol(mlx);
 		return (0);
 	}
-
 	else if (keycode == KEY_E)
 		get_layout(mlx);
-/* 	else if (keycode == KEY_ONE)
-		printf("\n%d\n", keycode); */
 	else if (!key_event_sets(keycode, mlx))
 		return (1);
 	else if (!key_event_color_patterns(keycode, mlx))
@@ -120,29 +120,6 @@ int	key_event(int keycode, t_fractol *mlx)
 		return (1);
 	else
 		return (1);
-	render(mlx);
-	return (0);
-}
-
-int	mouse_event(int keycode, int x, int y, t_fractol *mlx)
-{
-	if (keycode == MOUSE_WHEEL_UP)
-	{
-		mouse_zoom(x, y, mlx);
-	}
-	else if (keycode == MOUSE_BTN)
-	{
-		mlx->cr = mlx->min_r + (double)x * (mlx->max_r - mlx->min_r) / WIDTH;
-		mlx->ci = mlx->max_i + (double)y * (mlx->min_i - mlx->max_i) / HEIGHT;
-		mlx->set = JULIA;
-		get_layout(mlx);
-		reinit_img(mlx);
-		color_shift(mlx);
-	}
-	else if (keycode == MOUSE_WHEEL_DOWN)
-		zoom(mlx, 0.5);
-	else
-		return (0);
 	render(mlx);
 	return (0);
 }

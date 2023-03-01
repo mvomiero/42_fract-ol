@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:18:42 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/01 12:58:31 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/01 19:11:18 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static void	get_set(t_fractol *f, char **av)
 		f->set = JULIA;
 	else
 		clean_exit(EXIT_FAILURE, f);
-
 }
 
 static void	get_julia_init_values(t_fractol *f, int ac, char **av)
