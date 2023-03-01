@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:16:46 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/01 13:51:13 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/01 17:53:13 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define HEIGHT 900
 
 
-# define ITERATIONS 50
+# define ITERATIONS 10
 
 // Fractal sets
 # define MANDELBROT 1
@@ -35,15 +35,23 @@
 //colors
 # define LUISA 1
 # define PAOLA 2
+# define BIANCA 3
 # define RANDOM 5
 
-# define COLOR 0xBA7FF0
+# define COLOR 0xFC0FDD
 //# define COLOR 0x2BEB23
 
 # define COLOR_1 0x2F4AE0
 # define COLOR_2 0xE03B02
 # define COLOR_3 0x742FE0
 # define COLOR_4 0xBF2C1F
+# define COLOR_5 0x8703FE
+# define COLOR_6 0x5350FF
+# define COLOR_7 0xE5FE03
+# define COLOR_8 0xCC0033
+# define COLOR_9 0x6B5400
+# define WHITE 0xFFFFFF
+# define BLACK 0x000000
 
 
 //# define MATH cos
@@ -72,6 +80,7 @@ typedef struct s_fractol
 	int		*palette;
 	int		color_pattern;
 	int		color;
+	int		color_foreground;
 	int		iterations;
 }	t_fractol;
 
@@ -97,6 +106,10 @@ void	reinit_img(t_fractol *f);
 void	color_shift(t_fractol *f);
 
 void	set_color_mono(t_fractol *f, int color);
+void	set_color_bi(t_fractol *f, int color);
+void	set_color_bianca(t_fractol *f, int colors[2], int n);
+
+
 
 void	set_color_multiple(t_fractol *f, int colors[4], int n);
 void	set_color_math(t_fractol *f, int color);

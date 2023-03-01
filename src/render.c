@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:51:19 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/01 11:28:00 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/01 17:53:43 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	render(t_fractol *f)
 			pi = f->max_i + (double)y * (f->min_i - f->max_i) / HEIGHT;
 			nb_iter = calculate_fractal(f, pr, pi);
 			if (nb_iter > f->iterations - 1)
-				set_pixel_color(f, x, y, 0xFFFFFF);
+				set_pixel_color(f, x, y, f->color_foreground);
 			else
 				set_pixel_color(f, x, y, f->palette[nb_iter]);
 		}

@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:47:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/01 13:52:32 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/01 18:05:14 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,15 @@ static int	key_event_color_patterns(int keycode, t_fractol *mlx)
 	else if (keycode == KEY_R)
 		mlx->color_pattern = RANDOM;
 	else if (keycode == KEY_L)
+	{
+		mlx->color_foreground = WHITE;
 		mlx->color_pattern = LUISA;
+	}
+	else if (keycode == KEY_B)
+	{
+		mlx->color_foreground = COLOR_8;
+		mlx->color_pattern = BIANCA;
+	}
 	else
 		return (1);
 	color_shift(mlx);
@@ -45,20 +53,47 @@ static int	key_event_color_patterns(int keycode, t_fractol *mlx)
 
 static int	key_event_colors(int keycode, t_fractol *mlx)
 {
-	if (keycode == KEY_ONE)
-		mlx->color = 0x2BEB23;
-	else if (keycode == KEY_R)
-		mlx->color_pattern = RANDOM;
-	else if (keycode == KEY_L)
-		mlx->color_pattern = LUISA;
-	else if (keycode == KEY_THREE)
-	{
-		printf("\n%d\n", keycode);
-		mlx->color = 0xBA7FF0;
-	}
+	if (keycode == KEY_1)
+		mlx->color = COLOR_1;
+	else if (keycode == KEY_2)
+		mlx->color = COLOR_2;
+	else if (keycode == KEY_3)
+		mlx->color = COLOR_3;
+	else if (keycode == KEY_4)
+		mlx->color = COLOR_4;
+	else if (keycode == KEY_5)
+		mlx->color = COLOR_5;
+	else if (keycode == KEY_6)
+		mlx->color = COLOR_6;
+	else if (keycode == KEY_7)
+		mlx->color = COLOR_7;
+	else if (keycode == KEY_8)
+		mlx->color = COLOR_8;
+	else if (keycode == KEY_9)
+		mlx->color = COLOR_9;
+	else if (keycode == KEY_0)
+		mlx->color = COLOR;
 	else
 		return (1);
 	color_shift(mlx);
+	render(mlx);
+	return (0);
+}
+
+static int	key_event_iterations(int keycode, t_fractol *mlx)
+{
+	if (keycode == KEY_PLUS)
+	{
+		mlx->iterations += 10;
+		reinit_img(mlx);
+		color_shift(mlx);
+	}
+	else if (keycode == KEY_MINUS && (mlx->iterations > 10))
+	{
+		mlx->iterations -= 10;
+		reinit_img(mlx);
+		color_shift(mlx);
+	}
 	render(mlx);
 	return (0);
 }
@@ -70,12 +105,7 @@ int	key_event(int keycode, t_fractol *mlx)
 		end_fractol(mlx);
 		return (0);
 	}
-	else if (keycode == KEY_PLUS)
-	{
-		mlx->iterations += 20;
-		reinit_img(mlx);
-		color_shift(mlx);
-	}
+
 	else if (keycode == KEY_E)
 		get_layout(mlx);
 /* 	else if (keycode == KEY_ONE)
@@ -86,7 +116,8 @@ int	key_event(int keycode, t_fractol *mlx)
 		return (1);
 	else if (!key_event_colors(keycode, mlx))
 		return (1);
-
+	else if (!key_event_iterations(keycode, mlx))
+		return (1);
 	else
 		return (1);
 	render(mlx);
