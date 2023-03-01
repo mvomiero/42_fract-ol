@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 15:13:55 by mvomiero          #+#    #+#              #
-#    Updated: 2023/03/01 11:31:28 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/03/01 12:39:33 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ all: $(MLX) $(LIBFT) $(OBJ_PATH) $(NAME)
 $(NAME): $(OBJS)
 	@echo "Compiling fractol..."
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX) $(LIBFT) $(INC) -lXext -lX11 -lm
-	@echo "Fractol ready."
+	@echo -e "\033[35;1;3mFractol ready\033[0m"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@echo "Compiling object files"

@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:47:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/01 11:33:09 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:52:32 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 static int	key_event_sets(int keycode, t_fractol *mlx)
 {
-	if (keycode == KEY_ONE && mlx->set != MANDELBROT)
+	if (keycode == KEY_M && mlx->set != MANDELBROT)
 		mlx->set = MANDELBROT;
-	else if (keycode == KEY_TWO && mlx->set != JULIA)
+	else if (keycode == KEY_J && mlx->set != JULIA)
 		mlx->set = JULIA;
 	else
 		return (1);
@@ -28,18 +28,37 @@ static int	key_event_sets(int keycode, t_fractol *mlx)
 	return (0);
 }
 
-static int	key_event_colors(int keycode, t_fractol *mlx)
+static int	key_event_color_patterns(int keycode, t_fractol *mlx)
 {
 	if (keycode == KEY_P)
-	{
 		mlx->color_pattern = PAOLA;
-		color_shift(mlx);
-	}
 	else if (keycode == KEY_R)
-	{
 		mlx->color_pattern = RANDOM;
-		color_shift(mlx);
+	else if (keycode == KEY_L)
+		mlx->color_pattern = LUISA;
+	else
+		return (1);
+	color_shift(mlx);
+	render(mlx);
+	return (0);
+}
+
+static int	key_event_colors(int keycode, t_fractol *mlx)
+{
+	if (keycode == KEY_ONE)
+		mlx->color = 0x2BEB23;
+	else if (keycode == KEY_R)
+		mlx->color_pattern = RANDOM;
+	else if (keycode == KEY_L)
+		mlx->color_pattern = LUISA;
+	else if (keycode == KEY_THREE)
+	{
+		printf("\n%d\n", keycode);
+		mlx->color = 0xBA7FF0;
 	}
+	else
+		return (1);
+	color_shift(mlx);
 	render(mlx);
 	return (0);
 }
@@ -57,14 +76,17 @@ int	key_event(int keycode, t_fractol *mlx)
 		reinit_img(mlx);
 		color_shift(mlx);
 	}
-	else if (keycode == KEY_MINUS)
-		zoom(mlx, 2);
 	else if (keycode == KEY_E)
 		get_layout(mlx);
+/* 	else if (keycode == KEY_ONE)
+		printf("\n%d\n", keycode); */
 	else if (!key_event_sets(keycode, mlx))
+		return (1);
+	else if (!key_event_color_patterns(keycode, mlx))
 		return (1);
 	else if (!key_event_colors(keycode, mlx))
 		return (1);
+
 	else
 		return (1);
 	render(mlx);
@@ -73,7 +95,6 @@ int	key_event(int keycode, t_fractol *mlx)
 
 int	mouse_event(int keycode, int x, int y, t_fractol *mlx)
 {
-	printf("\n%d\n", keycode);
 	if (keycode == MOUSE_WHEEL_UP)
 	{
 		mouse_zoom(x, y, mlx);

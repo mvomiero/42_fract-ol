@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:16:08 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/01 11:24:11 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:00:42 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ int	main(int ac, char **av)
 {
 	t_fractol	f;
 
+	// handle no arguments if not segfault
+	print_instructions();
 	if (ac < 2)
-		help_msg(&f);
+		exit(1);
 	init_struct(&f);
 	parse_args(&f, ac, av);
 	init(&f);

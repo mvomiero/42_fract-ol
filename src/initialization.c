@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:07:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/01 11:25:32 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:24:48 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_struct(t_fractol *f)
 	f->ci = 0;
 	f->palette = NULL;
 	f->color_pattern = LUISA;
-	f->color = 0;
+	f->color = COLOR;
 	f->iterations = ITERATIONS;
 }
 

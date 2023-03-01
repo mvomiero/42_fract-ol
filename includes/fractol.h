@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:16:46 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/01 11:32:12 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:51:13 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define RANDOM 5
 
 # define COLOR 0xBA7FF0
+//# define COLOR 0x2BEB23
 
 # define COLOR_1 0x2F4AE0
 # define COLOR_2 0xE03B02
@@ -103,7 +104,7 @@ void	set_color_math(t_fractol *f, int color);
 void	zoom(t_fractol *f, double zoom);
 
 
-void	help_msg(t_fractol *f);
+void	print_instructions(void);
 int		err_msg(char *str1, int errno);
 
 

@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 19:57:44 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/02/24 16:42:47 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/01 11:45:40 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # define KEY_W 119
 # define KEY_A 97
 # define KEY_E 101
+# define KEY_J 106
+# define KEY_L 108
+# define KEY_M 109
 # define KEY_R 114
 # define KEY_S 115
 # define KEY_D 100
