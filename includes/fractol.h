@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:16:46 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/02 14:39:37 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/02 16:50:17 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,6 @@
 # define WHITE 0xFFFFFF
 # define BLACK 0x000000
 
-// Math
-//# define MATH cos
-//# define MATH exp
-//# define MATH log
-//# define MATH sqrt
-//# define MATH cos
-
 // Struct with all the data
 typedef struct s_fractol
 {
@@ -93,6 +86,7 @@ void	get_complex_plane_extremes(t_fractol *f);
 
 // Parsing arguments
 double	ft_atof(char *str);
+int		arg_is_zero(char *av);
 void	parse_args(t_fractol *f, int ac, char **av);
 
 // Fractal calculations
@@ -122,5 +116,12 @@ int		mouse_zoom(int x, int y, t_fractol *mlx);
 void	clean_exit(int exit_code, t_fractol *f);
 int		end_fractol(t_fractol *mlx);
 int		err_msg(char *str1, int errno);
+
+// Math variables possibilities
+//# define MATH cos
+//# define MATH exp
+//# define MATH log
+//# define MATH sqrt
+//# define MATH cos
 
 #endif

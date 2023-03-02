@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:02:04 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/02 14:20:38 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/02 16:32:15 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /* 
 	instructions about how to properly use the program
  */
+
 void	print_instructions(void)
 {
 	ft_putendl_fd("\n\t\033[35;1m~~~~~~~~\033[0m", 1);

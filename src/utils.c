@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:39:22 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/02 14:25:58 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/02 16:56:09 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,26 @@ static int	skip_space_sign(char *str, int *is_neg)
 		i++;
 	}
 	return (i);
+}
+
+int	arg_is_zero(char *av)
+{
+	int	i;
+
+	i = 0;
+	if (av[i] == '+' || av[i] == '+')
+		i++;
+	while (av[i] && av[i] == '0')
+		i++;
+	if (!av[i])
+		return (1);
+	if (av[i] == '.')
+		i++;
+	while (av[i] && av[i] == '0')
+		i++;
+	if (av[i] != '\0')
+		return (0);
+	return (1);
 }
 
 /* ft_atof:
