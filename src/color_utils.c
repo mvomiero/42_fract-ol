@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:50:51 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/02 13:05:22 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/02 14:41:02 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	set_color_math(t_fractol *f, int color)
 	i = 0;
 	while (i < f->iterations)
 	{
-		fraction = MATH((double)i);
+		fraction = log((double)i);
 		f->palette[i] = interpolate(color1, color2, fraction);
 		i++;
 	}

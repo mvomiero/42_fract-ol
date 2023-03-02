@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:31:04 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/02 13:19:41 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:51:38 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,12 @@ int	mouse_zoom(int x, int y, t_fractol *mlx)
 	return (0);
 }
 
+/* mouse_event:
+	function called from the mouse hook, checks the input and do actions.
+	x and y are the coorinates of the position of the mouse inside the window.
+	If you press the mouse button you will have the correspondent julia set
+	for c corresponding the compley value you are pointing.
+ */
 int	mouse_event(int keycode, int x, int y, t_fractol *mlx)
 {
 	if (keycode == MOUSE_WHEEL_UP)

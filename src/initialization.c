@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:07:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/02 13:23:33 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/02 14:18:54 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	reinit_img(t_fractol *f)
 	initialise the mlx and the window, gets the complex plane and reinit the
 	image.
  */
-void	init(t_fractol *f)
+void	init_mlx(t_fractol *f)
 {
 	f->mlx = mlx_init();
 	if (!f->mlx)

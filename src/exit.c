@@ -6,12 +6,15 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:00:26 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/01 11:20:16 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:36:42 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+/* clean_exit:
+	frees all the elements of the struct t_fractol
+ */
 void	clean_exit(int exit_code, t_fractol *f)
 {
 	if (!f)
@@ -32,4 +35,10 @@ void	clean_exit(int exit_code, t_fractol *f)
 		free(f->mlx);
 	}
 	exit(exit_code);
+}
+
+int	end_fractol(t_fractol *mlx)
+{
+	clean_exit(0, mlx);
+	return (0);
 }

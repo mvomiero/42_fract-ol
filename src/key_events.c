@@ -6,15 +6,15 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:47:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/02 13:19:41 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/02 14:18:03 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-// look at the manual, mlx_loop, you get a function
-// -> key_hook(int keycode,void *param);
-
+/* event_sets:
+	changes to the different julia or mandelbrot sets
+ */
 static int	key_event_sets(int keycode, t_fractol *mlx)
 {
 	if (keycode == KEY_M && mlx->set != MANDELBROT)
@@ -28,6 +28,9 @@ static int	key_event_sets(int keycode, t_fractol *mlx)
 	return (0);
 }
 
+/* color_patterns:
+	changes to the different color patterns
+ */
 static int	key_event_color_patterns(int keycode, t_fractol *mlx)
 {
 	if (keycode == KEY_P)
@@ -54,6 +57,9 @@ static int	key_event_color_patterns(int keycode, t_fractol *mlx)
 	return (0);
 }
 
+/* colors:
+	changes the colors for the LUISA color set, pressing numbers 0-9
+ */
 static int	key_event_colors(int keycode, t_fractol *mlx)
 {
 	if (keycode == KEY_1)
@@ -83,6 +89,10 @@ static int	key_event_colors(int keycode, t_fractol *mlx)
 	return (0);
 }
 
+/* iterations:
+	chil function of key_event.
+	sets an higher or lower number of iterations
+ */
 static int	key_event_iterations(int keycode, t_fractol *mlx)
 {
 	if (keycode == KEY_PLUS && mlx->iterations < ITERATIONS_MAX)
@@ -97,10 +107,19 @@ static int	key_event_iterations(int keycode, t_fractol *mlx)
 		reinit_img(mlx);
 		color_set(mlx);
 	}
+	else
+		return (1);
 	render(mlx);
 	return (0);
 }
 
+/* key_event:
+	passed to the mlx_key_hook(), gets the parameteter keycode from it.
+	(see manual)
+	depending form the key pressed, different actions are executed. Due to the 
+	amount of the different commands, it is split in thematic smaller child 
+	functions
+ */
 int	key_event(int keycode, t_fractol *mlx)
 {
 	if (keycode == KEY_ESC)

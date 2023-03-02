@@ -6,26 +6,27 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:16:46 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/02 13:19:41 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/02 14:39:37 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "mlx.h"
 // for the keys definitions I could have included those ones
 //# include <X11/keysym.h> 		
 //# include <X11/X.h>
+# include "mlx.h"
 # include "libft.h"
 # include "keys.h"
 # include <stdio.h>
 # include <math.h>
 
+// Window size
 # define WIDTH 600
 # define HEIGHT 900
 
-
+// Iterations
 # define ITERATIONS 10
 # define ITERATIONS_MAX 800
 
@@ -33,12 +34,13 @@
 # define MANDELBROT 1
 # define JULIA 2
 
-//colors
+// Color sets
 # define LUISA 1
 # define PAOLA 2
 # define BIANCA 3
 # define RANDOM 5
 
+// Colors
 # define COLOR 0xFC0FDD
 
 # define COLOR_1 0xF6CC22
@@ -53,17 +55,14 @@
 # define WHITE 0xFFFFFF
 # define BLACK 0x000000
 
-
+// Math
 //# define MATH cos
 //# define MATH exp
 //# define MATH log
 //# define MATH sqrt
-# define MATH cos
+//# define MATH cos
 
-
-
-
-// struct with all the data
+// Struct with all the data
 typedef struct s_fractol
 {
 	void	*mlx;
@@ -84,62 +83,44 @@ typedef struct s_fractol
 	int		iterations;
 }	t_fractol;
 
+// Instructions
+void	print_instructions(void);
+
+// Initiazation
 void	init_struct(t_fractol *f);
+void	init_mlx(t_fractol *f);
+void	get_complex_plane_extremes(t_fractol *f);
 
-
+// Parsing arguments
 double	ft_atof(char *str);
 void	parse_args(t_fractol *f, int ac, char **av);
 
-void	init(t_fractol *f);
+// Fractal calculations
+int		mandelbrot(t_fractol *f, double cr, double ci);
+int		julia(t_fractol *f, double zr, double zi);
+
+// Rendering
+void	reinit_img(t_fractol *f);
 void	render(t_fractol *f);
 
-void	get_complex_plane_extremes(t_fractol *f);
-
-
-int	mandelbrot(t_fractol *f, double cr, double ci);
-int	julia(t_fractol *f, double zr, double zi);
-
-
-void	reinit_img(t_fractol *f);
-
-
+// Colors and color sets
 void	color_set(t_fractol *f);
-
 void	set_color_mono(t_fractol *f, int color);
 void	set_color_bi(t_fractol *f, int color);
 void	set_color_bianca(t_fractol *f, int colors[2], int n);
-
-
-
 void	set_color_multiple(t_fractol *f, int colors[3], int n);
 void	set_color_math(t_fractol *f, int color);
 
+// Events
 void	zoom(t_fractol *f, double zoom);
-
-
-void	print_instructions(void);
-int		err_msg(char *str1, int errno);
-
-
 void	move(t_fractol *f, double distance, char direction);
+int		key_event(int keycode, t_fractol *mlx);
+int		mouse_event(int keycode, int x, int y, t_fractol *mlx);
+int		mouse_zoom(int x, int y, t_fractol *mlx);
 
-int	key_event(int keycode, t_fractol *mlx);
-//static int	key_event_extend(int keycode, t_fractol *mlx);
-int	mouse_event(int keycode, int x, int y, t_fractol *mlx);
-int	mouse_zoom(int x, int y, t_fractol *mlx);
-
-
-
-
+// Exit and Errors
 void	clean_exit(int exit_code, t_fractol *f);
-
-int	end_fractol(t_fractol *mlx);
-
-int	create_trgb(int t, int r, int g, int b);
-void	render_background(t_fractol *f, int color);
-
-
-
-
+int		end_fractol(t_fractol *mlx);
+int		err_msg(char *str1, int errno);
 
 #endif

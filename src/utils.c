@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:39:22 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/01 11:25:42 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/02 14:25:58 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ static int	ft_isspace(int c)
 	return (0);
 }
 
+/* skip_space_sign:
+	is the first part of the ft_atof(). It wasn't fitting for moulinette
+ */
 static int	skip_space_sign(char *str, int *is_neg)
 {
 	int	i;
@@ -35,6 +38,10 @@ static int	skip_space_sign(char *str, int *is_neg)
 	return (i);
 }
 
+/* ft_atof:
+	from ascii to float (double).
+	Same as atoi, just you have to divide the rational and irrational part.
+ */
 double	ft_atof(char *str)
 {
 	int		i;
@@ -59,13 +66,54 @@ double	ft_atof(char *str)
 		div *= 0.1;
 		i++;
 	}
-	if (str[i] && !ft_isdigit(str[i]))
-		return (-42);
 	return (nb * is_neg);
 }
 
-int	end_fractol(t_fractol *mlx)
+/* 
+
+// ****** JUST RANDOM STUFF DONE AT THE BEGINNING TO TEST MLX LIBRARY
+
+int	main(void)
 {
-	clean_exit(0, mlx);
+	void	*mlx;
+	void	*win;
+
+	mlx = mlx_init();
+	win = mlx_new_window(mlx, WIDTH, HEIGHT, "Hello world!");
+	
+	// for a simple printing of a rectangle 
+	for (int i = WIDTH - 50; i > 50; i--)
+	{
+		for (int j = HEIGHT - 200; j > 200; j--)
+			mlx_pixel_put(mlx, win, i, j, 0xFFFFFF);
+		mlx_pixel_put(mlx, win, i, HEIGHT/2, 0xFFFFFF);
+	}
+  	mlx_loop(mlx);
+} */
+
+/* // to use a whatever key to close the opened window
+
+typedef struct	s_vars {
+	void	*mlx;
+	void	*win;
+}				t_vars;
+
+int	ft_close(int keycode, t_vars *vars)
+{
+	(void)keycode;
+	mlx_destroy_window(vars->mlx, vars->win);
 	return (0);
 }
+
+int	main(void)
+{
+	t_vars	vars;
+
+	vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
+	mlx_hook(vars.win, 2, 1L<<0, ft_close, &vars);
+	mlx_loop(vars.mlx);
+} */
+
+// TO PRINT A STRING
+//mlx_string_put(f.mlx, f.win, 50, 50, -1654654232, "ciaociao");

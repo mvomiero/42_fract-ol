@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 15:13:55 by mvomiero          #+#    #+#              #
-#    Updated: 2023/03/01 12:39:33 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/03/02 14:26:43 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,15 +41,14 @@ SRC			=	exit.c \
 				initialization.c \
 				msg.c \
 				parsing_args.c \
-				try.c  utils.c \
+				utils.c \
 				fract_mandelbrot.c \
 				render.c \
-				events.c \
-				utils_color.c \
+				key_events.c \
 				color.c \
 				color_utils.c \
 				fract_julia.c \
-				zoom.c
+				mouse_events_zoom.c
 
 SRCS		= $(addprefix $(SRC_PATH), $(SRC))
 
