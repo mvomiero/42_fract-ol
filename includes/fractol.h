@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:16:46 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/01 18:54:52 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:19:41 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 
 
 # define ITERATIONS 10
+# define ITERATIONS_MAX 800
 
 // Fractal sets
 # define MANDELBROT 1
@@ -92,7 +93,7 @@ void	parse_args(t_fractol *f, int ac, char **av);
 void	init(t_fractol *f);
 void	render(t_fractol *f);
 
-void	get_layout(t_fractol *f);
+void	get_complex_plane_extremes(t_fractol *f);
 
 
 int	mandelbrot(t_fractol *f, double cr, double ci);
@@ -102,7 +103,7 @@ int	julia(t_fractol *f, double zr, double zi);
 void	reinit_img(t_fractol *f);
 
 
-void	color_shift(t_fractol *f);
+void	color_set(t_fractol *f);
 
 void	set_color_mono(t_fractol *f, int color);
 void	set_color_bi(t_fractol *f, int color);

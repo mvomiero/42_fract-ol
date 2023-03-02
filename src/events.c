@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:47:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/01 19:09:36 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:19:41 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	key_event_sets(int keycode, t_fractol *mlx)
 		mlx->set = JULIA;
 	else
 		return (1);
-	get_layout(mlx);
+	get_complex_plane_extremes(mlx);
 	render(mlx);
 	return (0);
 }
@@ -49,7 +49,7 @@ static int	key_event_color_patterns(int keycode, t_fractol *mlx)
 	}
 	else
 		return (1);
-	color_shift(mlx);
+	color_set(mlx);
 	render(mlx);
 	return (0);
 }
@@ -78,24 +78,24 @@ static int	key_event_colors(int keycode, t_fractol *mlx)
 		mlx->color = COLOR;
 	else
 		return (1);
-	color_shift(mlx);
+	color_set(mlx);
 	render(mlx);
 	return (0);
 }
 
 static int	key_event_iterations(int keycode, t_fractol *mlx)
 {
-	if (keycode == KEY_PLUS)
+	if (keycode == KEY_PLUS && mlx->iterations < ITERATIONS_MAX)
 	{
 		mlx->iterations += 10;
 		reinit_img(mlx);
-		color_shift(mlx);
+		color_set(mlx);
 	}
 	else if (keycode == KEY_MINUS && (mlx->iterations > 10))
 	{
 		mlx->iterations -= 10;
 		reinit_img(mlx);
-		color_shift(mlx);
+		color_set(mlx);
 	}
 	render(mlx);
 	return (0);
@@ -109,7 +109,7 @@ int	key_event(int keycode, t_fractol *mlx)
 		return (0);
 	}
 	else if (keycode == KEY_E)
-		get_layout(mlx);
+		get_complex_plane_extremes(mlx);
 	else if (!key_event_sets(keycode, mlx))
 		return (1);
 	else if (!key_event_color_patterns(keycode, mlx))

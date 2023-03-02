@@ -6,13 +6,16 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:52:55 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/01 18:50:47 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/02 12:33:51 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	color_shift(t_fractol *f)
+/* color_set:
+	redirects to the right color function, with the right parameters
+ */
+void	color_set(t_fractol *f)
 {
 	if (f->color_pattern == LUISA)
 		set_color_mono(f, f->color);

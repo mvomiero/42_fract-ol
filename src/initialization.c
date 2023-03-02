@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:07:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/01 17:52:44 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:23:33 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ void	init_struct(t_fractol *f)
 	f->iterations = ITERATIONS;
 }
 
+/* init_image:
+	initialise the image and the color palette.
+	gets the address of the buffer and stores it in f->buf
+ */
 static void	init_img(t_fractol *f)
 {
 	int		pixel_bits;
@@ -49,6 +53,9 @@ static void	init_img(t_fractol *f)
 	f->buf = buf;
 }
 
+/* reinit_image:
+	reinitialises the image
+ */
 void	reinit_img(t_fractol *f)
 {
 	if (f->mlx && f->img)
@@ -60,6 +67,10 @@ void	reinit_img(t_fractol *f)
 	init_img(f);
 }
 
+/* init:
+	initialise the mlx and the window, gets the complex plane and reinit the
+	image.
+ */
 void	init(t_fractol *f)
 {
 	f->mlx = mlx_init();
@@ -68,11 +79,18 @@ void	init(t_fractol *f)
 	f->win = mlx_new_window(f->mlx, WIDTH, HEIGHT, "Fract'ol");
 	if (!f->win)
 		clean_exit(err_msg("mlx: no window", 4), f);
-	get_layout(f);
+	get_complex_plane_extremes(f);
 	reinit_img(f);
 }
 
-void	get_layout(t_fractol *f)
+/* 
+	gets the extremes of the complex plane.
+	the limits are set to -2, 2 for the real number axis.
+	In order to find the imaginary axis extremes, and have the image centered in
+	the window, a proportion with the WIDTH 	and HEIGHT of the real window 
+	is made
+ */
+void	get_complex_plane_extremes(t_fractol *f)
 {
 	f->min_r = -2.0;
 	f->max_r = 2.0;

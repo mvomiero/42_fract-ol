@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:31:04 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/01 19:10:46 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:19:41 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,9 +126,9 @@ int	mouse_event(int keycode, int x, int y, t_fractol *mlx)
 		mlx->cr = mlx->min_r + (double)x * (mlx->max_r - mlx->min_r) / WIDTH;
 		mlx->ci = mlx->max_i + (double)y * (mlx->min_i - mlx->max_i) / HEIGHT;
 		mlx->set = JULIA;
-		get_layout(mlx);
+		get_complex_plane_extremes(mlx);
 		reinit_img(mlx);
-		color_shift(mlx);
+		color_set(mlx);
 	}
 	else if (keycode == MOUSE_WHEEL_DOWN)
 		zoom(mlx, 0.5);
