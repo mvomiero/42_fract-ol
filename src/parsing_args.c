@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:18:42 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/02 18:16:51 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/02 18:29:15 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,10 @@ static void	get_julia_init_values(t_fractol *f, int ac, char **av)
 	{
 		f->cr = -0.766667;
 		f->ci = -0.090000;
-		print_instructions();
 		return ;
 	}
 	if (ac == 3)
-	{
-		print_instructions();
 		clean_exit(EXIT_FAILURE, f);
-	}
 	if (arg_is_zero(av[2]))
 		f->cr = 0;
 	if (arg_is_zero(av[3]))
@@ -52,10 +48,7 @@ static void	get_julia_init_values(t_fractol *f, int ac, char **av)
 	f->ci = ft_atof(av[3]);
 	if ((!arg_is_zero(av[2]) && !ft_atof(av[2])) || \
 			(!arg_is_zero(av[3]) && !ft_atof(av[3])))
-	{
-		print_instructions();
 		clean_exit(EXIT_FAILURE, f);
-	}
 }
 
 /* parse_args:
