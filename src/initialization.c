@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:07:09 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/02 14:18:54 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/02 17:28:33 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,9 @@ void	reinit_img(t_fractol *f)
 	if (f->palette)
 		free(f->palette);
 	if (f->buf)
+	{
 		f->buf = NULL;
+	}
 	init_img(f);
 }
 

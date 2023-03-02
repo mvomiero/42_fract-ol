@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:16:46 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/02 16:50:17 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/02 18:19:57 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <math.h>
 
 // Window size
-# define WIDTH 600
+# define WIDTH 900
 # define HEIGHT 900
 
 // Iterations

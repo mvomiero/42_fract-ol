@@ -6,7 +6,7 @@
 /*   By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:18:42 by mvomiero          #+#    #+#             */
-/*   Updated: 2023/03/02 16:59:33 by mvomiero         ###   ########.fr       */
+/*   Updated: 2023/03/02 18:16:51 by mvomiero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	get_julia_init_values(t_fractol *f, int ac, char **av)
 		print_instructions();
 		return ;
 	}
-	if (ac == 3 || ac > 4)
+	if (ac == 3)
 	{
 		print_instructions();
 		clean_exit(EXIT_FAILURE, f);
@@ -64,7 +64,7 @@ static void	get_julia_init_values(t_fractol *f, int ac, char **av)
 void	parse_args(t_fractol *f, int ac, char **av)
 {
 	get_set(f, av);
-	if (f->set != JULIA && ac > 3)
+	if (f->set == MANDELBROT && ac > 2)
 		clean_exit(EXIT_FAILURE, f);
 	else if (f->set == JULIA && ac > 5)
 		clean_exit(EXIT_FAILURE, f);

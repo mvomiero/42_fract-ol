@@ -6,7 +6,7 @@
 #    By: mvomiero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 15:13:55 by mvomiero          #+#    #+#              #
-#    Updated: 2023/03/02 14:26:43 by mvomiero         ###   ########.fr        #
+#    Updated: 2023/03/02 18:03:51 by mvomiero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,11 +61,11 @@ all: $(MLX) $(LIBFT) $(OBJ_PATH) $(NAME)
 
 $(NAME): $(OBJS)
 	@echo "Compiling fractol..."
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX) $(LIBFT) $(INC) -lXext -lX11 -lm
-	@echo -e "\033[35;1;3mFractol ready\033[0m"
+	@-$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX) $(INC) -lXext -lX11 -lm
+	@echo "\n\t\033[35;1;3mFractol ready\033[0m\n"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
-	@echo "Compiling object files"
+#	@echo "Compiling object files"
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 
 $(OBJ_PATH):
@@ -96,12 +96,17 @@ fclean: clean
 re: fclean all
 
 valgrind:
-	valgrind --leak-check=full ./fractol mandelbrot
+	valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all \
+	./fractol
 
 man:
 	man minilibx-linux/man/man1/mlx.1
 
 run: all
 	./fractol mandelbrot
+
+norminette_check:
+	norminette ./src
+	norminette -R CheckForbiddenSourceHeader ./includes
 
 .PHONY: all re clean fclean
